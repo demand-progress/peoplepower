@@ -17,7 +17,7 @@
         {% endif %}
 
         <div class="ak-styled-fields {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
-        
+
         <div class="ak-message-form">
             <div class="ak-event-contact-headers">
                 <div>
@@ -32,13 +32,14 @@
 	                        {% if signup.role == 'attendee' %}
 	                            Your event host
 	                        {% else %}
-	                            <span class="if-js to-count">{{signups|length}}</span> 
+	                            <span class="if-js to-count">{{signups|length}}</span>
 	                            {% if to == 'attendees' %}attendee{% else %}co-host{% endif %}{% if signups|length > 1 %}(s){% endif %}
 	                        {% endif %}
 	                    </span>
 	                </span>
 				</div>
             </div>
+
             {% if to in 'attendees|cohosts' %}
             <div class="event-contact-subject">
                 <div>
@@ -49,6 +50,7 @@
                 </div>
             </div>
             {% endif %}
+
             <div class="event-contact-body">
                 <div>
                     <label>Your Message:</label>
@@ -58,9 +60,9 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="ak-align-right">
-            <input name="send_email" value="Send" type="submit" class="ak-btn-short bgBlack"> 
+            <input name="send_email" value="Send" type="submit" class="ak-btn-short bgBlack">
             <input type="submit" name="cancel" value="Cancel" onclick="window.location.reload(); return false;" class="ak-btn-short bgBlack">
         </div>
 
