@@ -6,17 +6,17 @@
 {% if profile.payment_processor_information.use_vzero %}
 {% once %}
 <style type="text/css">
-.hosted-field {
-    height: 2.375em;;
-    display: inline-block;
-    padding: 7px 7px;
-    border: 1px solid #ccc;
-    background-color: white;
-}
-.hosted-field.braintree-hosted-fields-invalid {
-    border-color: {{ templateset.custom_fields.color_error|default:"#d00" }};
-    background-color: #FFC8C8;
-}
+    .hosted-field {
+        height: 2.375em;;
+        display: inline-block;
+        padding: 7px 7px;
+        border: 1px solid #ccc;
+        background-color: white;
+    }
+    .hosted-field.braintree-hosted-fields-invalid {
+        border-color: {{ templateset.custom_fields.color_error|default:"#d00" }};
+        background-color: #FFC8C8;
+    }
 </style>
 {% endonce %}
 {% endif %}

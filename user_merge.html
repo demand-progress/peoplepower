@@ -14,6 +14,7 @@
             <p>
                 If you'd like to consolidate your two accounts, we'll send an email to <b>{{ target }}</b> to confirm it's your email. Once you click the link in the email, we'll change your email address from <b>{{ actionkit_user.email }}</b> to <b>{{ target }}</b>.
             </p>
+
             <form name="merge" method="POST">
                 <input type="hidden" name="target" value="{{ target }}">
                 <input type="submit" value="Okay, send me the email!">

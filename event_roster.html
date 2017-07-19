@@ -11,6 +11,7 @@
     <h3>
         {% if signups.role == 'host' %}Cohost{% else %}Attendee{% endif %}{{ signups|length|pluralize }} ({{ signups|length }}  total)
     </h3>
+
     <form id="manage-{{signups.role}}" onvalidate="return validateRoster(this)" onconfirm="return confirmRoster(this)" name="manage-{{signups.role}}" method="post" action="/event/{{campaign.local_name}}/{{event.id}}/manage_signups" accept-charset="utf-8">
 
         <ul class="compact" id="ak-errors"></ul>
@@ -40,15 +41,15 @@
                     <td class="name-col">{{ signup.user }}</td>
                     <td class="phone-col">{{ signup.user.phone }}</td>
                     {% if event.is_in_past and signups.role == 'attendee' %}
-                        <td class="attended-col"> 
-                            {% if signup.attended %}yes{% else %}no{% endif %} 
+                        <td class="attended-col">
+                            {% if signup.attended %}yes{% else %}no{% endif %}
                         </td>
                     {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        
+
         <div class="signup-list-controls ak-clearfix">
             <input type="submit" class="email if-js ak-btn-short" value="Email">
             {% if signups.role == 'attendee' %}

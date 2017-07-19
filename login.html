@@ -25,9 +25,9 @@
                     <input type="hidden" name="this_is_the_login_form" value="1">
                     <input type="hidden" name="next" value="{{ next }}">
                     <input type="hidden" name="required" value="password">
-                    
+
                     <div class="ak-styled-fields ak-labels-above ak-errs-below ak-clearfix">
-                    
+
                         <div>
                             <label for="id_email">Email</label>
                             <input type="text" name="email" value="{{ email }}" id="id_email" class="ak-full-width">
@@ -36,7 +36,7 @@
                             <label for="id_password">Password</label>
                             <input type="password" name="password" id="id_password" class="ak-full-width">
                         </div>
-                        
+
                         <button type="submit" class="ak-submit-button">Log In</button>
 
                     </div>
@@ -47,7 +47,6 @@
                     <div>
                         <a href="{% url 'user_password_forgot' %}?next={{ next }}&amp;first=1&amp;email={{ email }}">Never logged in before?</a>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -61,7 +60,7 @@
 <script>
     actionkit.forms.contextRoot = '/context/';
     actionkit.forms.initValidation('login-form');
-    
+
     document.getElementById('id_{% if email %}password{% else %}email{% endif %}').focus()
 </script>
 

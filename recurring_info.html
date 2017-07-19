@@ -7,7 +7,7 @@
 
     <div class="ak-field-box">
         <div class="ak-styled-fields ak-labels-before {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
-        
+
         <div>
             <label>
                 Next Payment
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="ak-show-amount">
             <label>
                 Monthly Amount
@@ -41,7 +41,7 @@
             </label>
             <input type="text" name="amount" size="6" value="{{ profile.amount }}">
         </div>
-        
+
         <div>
             <label>
                 First Payment
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        
+
         {% if profile.order.payment_method == "cc" %}
         <div class="ak-show-cc">
             <label>
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="ak-change-cc" style="display: none">
             <label for="card_num_{{ profile.id }}">
                 Credit Card Number
@@ -77,7 +77,7 @@
             <input id="card_num_{{ profile.id }}" type="text" name="card_num" disabled=true>
             <div class="ak-card_num-hosted"></div>
         </div>
-        
+
         <div class="ak-change-cc" style="display: none">
             <label for="exp_date_{{ profile.id }}">
                 Expiration Date
@@ -85,7 +85,7 @@
             <input id="exp_date_{{ profile.id }}" type="text" name="exp_date" size="6" placeholder="MMYY" style="max-width: 33%" disabled=true>
             <div class="ak-exp_date-hosted"></div>
         </div>
-        
+
         <div class="ak-change-cc" style="display: none">
             <label for="card_code_{{ profile.id }}">
                 Verification Number
@@ -93,9 +93,8 @@
             <input id="card_code_{{ profile.id }}" type="text" name="card_code" size="6"  style="max-width: 33%" disabled=true>
             <div class="ak-card_code-hosted"></div>
         </div>
-
         {% endif %}
-        
+
         {% if profile.order.payment_method == "cc" %}
             <div class="ak-show-address" style="display: none">
                 <label>
@@ -110,9 +109,9 @@
                     {% endif %}
                 </div>
             </div>
-    
+
             {% if profile.payment_processor.recurring_update_supports_address %}
-    
+
             <div class="ak-change-address" style="display: none">
                 <div style="text-align: center">
                     Optionally also enter your credit card billing address:
@@ -123,42 +122,42 @@
                     </label>
                     <input name="address1" id="id_address1_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.address1 }}" disabled=true>
                 </div>
-    
+
                 <div>
                     <label for="id_city_{{ profile.id }}">
                         City
                     </label>
                     <input name="city" id="id_city_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.city }}" disabled=true>
                 </div>
-        
+
                 <div class="state_select_box">
                     <label>
                         State
                     </label>
                     {% include "./state_select.html" %}
                 </div>
-    
+
                 <div>
                     <label for="id_zip_{{ profile.id }}">
                         ZIP Code
                     </label>
                     <input name="zip" id="id_zip_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.zip }}" disabled=true>
                 </div>
-    
+
                 <div>
                     <label for="id_region_{{ profile.id }}">
                         Region
                     </label>
                     <input name="region" id="id_region_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.region }}" disabled=true>
                 </div>
-    
+
                 <div>
                     <label for="id_postal_{{ profile.id }}">
                         Postal
                     </label>
                     <input name="postal" id="id_postal_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.postal }}" disabled=true>
                 </div>
-    
+
                 <div class="country_select_box">
                     <label>
                         Country
@@ -177,7 +176,7 @@
                   });
                 </script>
             </div>
-    
+
             {% endif %}
         {% endif %}
 
