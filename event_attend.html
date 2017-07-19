@@ -12,17 +12,17 @@
 
     {% if event.is_open_for_signup or update %}
 
-<div class="banding-black">
-        <div class="ak-grid-row titlerow">
-            <div class="ak-grid-col ak-grid-col-12-of-12">
-                {% if not update %}
-                    <h2>{{ page.title }}</h2>
-                {% else %}
-                    <h2>Update your RSVP:</h2>
-                {% endif %}
-            </div>
+        <div class="banding-black">
+                <div class="ak-grid-row titlerow">
+                    <div class="ak-grid-col ak-grid-col-12-of-12">
+                        {% if not update %}
+                            <h2>{{ page.title }}</h2>
+                        {% else %}
+                            <h2>Update your RSVP:</h2>
+                        {% endif %}
+                    </div>
+                </div>
         </div>
-</div>
 
         <div class="ak-grid-row ak-grid-row-inverted">
             {% if page.custom_fields.featured_image %}
@@ -50,7 +50,7 @@
                     {% endwith %}
                     <!-- ...to here -->
                 </div>
-                
+
 
                 <ul class="compact" id="ak-errors"></ul>
 
@@ -74,12 +74,12 @@
                         {% endif %}
 
                     </div>
-            
+
                     {% if form.ground_rules|is_nonblank and not update %}
                         <div style="margin: 10px 0">
                             <input id="id_event_signup_ground_rules" type="checkbox" name="event_signup_ground_rules" value="1">
                             <label class="ak-checkbox-label" for="id_event_signup_ground_rules">
-                                <strong>Required:</strong>  
+                                <strong>Required:</strong>
                                 I agree to <a href="#" onclick="$('#id_ground_rules_text').show(); $(this).before(this.innerHTML + ' (below)').hide(); return false;">the rules</a> for signing up for an event.
                             </label>
                         </div>
@@ -93,21 +93,21 @@
                     <div>
                     <button type="submit" class="ak-submit-button">{% if update %}Update RSVP{% else %}RSVP to attend{% endif %}</button>
                     </div>
-                </div>   
+                </div>
                 <div class="event-share">
 		<div class="subA">Share</div>
 	   <div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://go.peoplepower.org/event/{{ campaign.local_name }}/{{event.id}}/signup/?source=fbshare" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
 <div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="https://twitter.com/home?status=Join%20me%20for%20an%20%40ACLU%20People%20Power%20Action%20Event%20in%20{{ event.city_etc_no_postal }}%20https%3A//go.peoplepower.org/event/{{campaign.local_name}}/{{event.id}}/signup/?source=twshare" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
-	</div>        
+	</div>
             </div>
         </div>
 <div class="ak-grid-row">
 <div class="ak-grid-col ak-grid-col-12-of-12">
 {% if campaign.show_address1 %}
-                
+
                 {% endif %}
 </div>
-</div>    
+</div>
     {% else %}
 
         <div class="ak-grid-row">
@@ -136,7 +136,7 @@
                 <div>
                     <a href="https://map.peoplepower.org/#zipcode={{args.zip}}&distance=50&sort=distance&f%5B%5D=launch">Search for another event</a>
                 </div>
-        
+
             </div>
         </div><!--grid-row-->
 
@@ -150,15 +150,15 @@
 
 <script type="text/javascript">
 $( function () {
-    var have_events = $('#id_have_events').val(); 
+    var have_events = $('#id_have_events').val();
     if ( ! have_events ) {
         var args = actionkit.utils.getArgs();
         actionkit.forms.eventSearch(null, {
-            event_id: args.event_id, 
-            zip: args.zip, 
+            event_id: args.event_id,
+            zip: args.zip,
             page: $('#id_page').val()
         });
-    }                        
+    }
 } );
 </script>
 

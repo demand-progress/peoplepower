@@ -38,8 +38,6 @@
 
             <div id="ak-user-info">
                 {% include "./user_form_wrapper.html" %}
-
-                
             </div>
 
             <div id="ak-event-info">
@@ -127,7 +125,7 @@
               {% endwith %}
             </div>
             {% endif %}
-            
+
             <div id="event-info">
                 <h3>Event location</h3>
                 <div class="unknown_user">
@@ -294,7 +292,7 @@
      // some event handlers want to change behavior during prefill (like
      // maybe not fire). they can check actionkit.forms.prefilling.
      forms.prefilling = true;
-     
+
      var prefill_data = (
          ( ak.context && ak.context.prefill_data )
          ? ak.context.prefill_data
@@ -336,7 +334,7 @@
 
      forms.prefilling = false;
  }
- 
+
     isEventUnitedStates = function () {
         var country = actionkit.form && actionkit.form.event_country
         && actionkit.utils.val(actionkit.form.event_country)
@@ -466,7 +464,7 @@ $( function () {
 } );
 $(window).load( function() {
 $('label[for="id_mobile_phone"]').html('Mobile phone*');
-	
+
 	function getParameterByName(name) {
 		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -484,7 +482,7 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 		$('#id_action_event_category_plannedparenthood').closest('div').hide();
 	}
 });
-	
+
 </script>
 
 {% endblock %}
