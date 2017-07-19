@@ -4,24 +4,25 @@
 {% comment %}
 
   To change which fields show, edit {% hide_by_default %} below and set
-  individual pages' required fields in the page admin, or activate the 
+  individual pages' required fields in the page admin, or activate the
   User Fields customization option in the page admin to override which
   fields are visible and the order they're shown in.
-  
+
   Unhide or require the 'country' field to make the form international. To
   geolocate more users outside the United States, unhide/require 'city'.
-  
+
   You can change label text in the language admin, change {% field_order %}
   below, edit the CSS, or replace this form entirely with static HTML. See
   the advanced template ref for more:
-  
+
   https://roboticdogs.actionkit.com/docs/manual/guide/advanced_templates.html
 
   name email prefix first_name middle_name last_name suffix country address1 address2 city state zip region postal phone
-  
+
   Enjoy!
 
 {% endcomment %}
+
 {% ifequal page.type "EventCreate" %}<h3>Your contact information</h3>{% endifequal %}
 {% field_order name email prefix first_name middle_name last_name suffix country address1 address2 city state zip region postal phone %}
 {% hide_by_default prefix first_name middle_name last_name suffix country phone address1 address2 city state region postal %}
@@ -34,7 +35,7 @@
         {% switch field.field_name %}
             {% case 'country' %}
                 {% include "./country_select.html" %}
-            {% case 'state' %} 
+            {% case 'state' %}
                 {% include "./state_select.html" %}
             {% else %}
                 {{ field.input_html }}
@@ -45,7 +46,7 @@
 {% if 'country'|is_in:fields %}
     <input type="hidden" name="auto_country" value="1">
     <style type="text/css">
-        /* Ensure that, if there's no JavaScript, the global-friendly 
+        /* Ensure that, if there's no JavaScript, the global-friendly
          * fields show rather than the US-only ones */
         #ak-fieldbox-zip, #ak-fieldbox-state { display: none; }
     </style>

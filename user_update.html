@@ -5,7 +5,7 @@
 {% block title %}Update Your Account{% endblock %}
 
 {% block content %}
-  
+
 {% if updated %}
 <div class="ak-grid-row">
     <div class="ak-grid-col ak-grid-col-12-of-12">
@@ -28,13 +28,13 @@
 <div class="ak-grid-row">
     <div class="ak-grid-col ak-grid-col-9-of-12">
         <form name="accountupdate" method="POST" class="ak-styled-fields ak-labels-before {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
-    
+
             {{ form.non_field_errors }}
 
             {% for field in form.visible_fields %}
                 <div>
                     <label for="{{ field.id_for_label }}">
-                        {{ field.label }} 
+                        {{ field.label }}
                     </label>
 
                     {% switch field.name %}
@@ -45,10 +45,10 @@
                                     <option value="{{ std_name|escapeall }}">{{ name|escapeall }}</option>
                                 {% endfor %}
                             </select>
-                        {% case 'state' %} 
+                        {% case 'state' %}
 							<select name="{{ input_name_prefix }}state" id="id_{{ input_name_prefix }}state" {% if onchange %}onchange="{{ onchange }}" onblur="{{ onchange }}"{% endif %}>
-    							<option selected="{{ field.value }}">{{ field.value }}</option>
-    							<option value="AL">Alabama</option>
+    						<option selected="{{ field.value }}">{{ field.value }}</option>
+    						<option value="AL">Alabama</option>
 								<option value="AK">Alaska</option>
 								<option value="AZ">Arizona</option>
 								<option value="AR">Arkansas</option>
@@ -109,7 +109,7 @@
                 </div>
             {% endfor %}
 
- 
+
     </div>
     <div class="ak-grid-col ak-grid-col-3-of-12">
     </div>
