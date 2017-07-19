@@ -3,8 +3,8 @@
 
 {% block content %}
 {% autoescape off %}
-<img alt="" width="0" height="0" src="https://ms.clicks.actions.aclu.org/conversion?version=1&conversion_items=1&conversion_value=0" />
-
+<!-- <img alt="" width="0" height="0" src="https://ms.clicks.actions.aclu.org/conversion?version=1&conversion_items=1&conversion_value=0" />
+ -->
 <form name="taf" method="POST" action="/update_action/" accept-charset="utf-8" class="ak-thanks ak-styled-fields">
     <input type="hidden" name="page" value="{{ page.name }}">
 
@@ -56,7 +56,7 @@
 </div> <!-- .banding-black -->
 
     <div class="ak-grid-row">
-		<div class="ak-grid-col ak-grid-col-6-of-12">	
+		<div class="ak-grid-col ak-grid-col-6-of-12">
             <div>
                 {% include_tmpl form.thank_you_text %}
             </div>
