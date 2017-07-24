@@ -64,7 +64,7 @@
 
     <div class="ak-page-header">
         <div class="ak-page-header-contents">
-            <img src="https://s3.us-east-2.amazonaws.com/teaminternet-map-prod/images/team-internet-cover.jpg" alt="Team Internet" />
+            <a href='https://events.battleforthenet.com'><img src="https://s3.us-east-2.amazonaws.com/teaminternet-map-prod/images/team-internet-cover.jpg" alt="Team Internet" /></a>
             <div class="ak-page-nav"></div>
         </div>
     </div>
@@ -73,7 +73,7 @@
         {% block content %}{% endblock %}
         <div class="ak-page-footer">
             <div class="ak-page-footer-contents">
-                <a href="https://battleforthenet.com/" class="footer-pp-logo"><img src="https://s3.us-east-2.amazonaws.com/teaminternet-map-prod/images/team-internet.jpg" alt="Team Internet" /></a>
+                <a href="https://events.battleforthenet.com/" class="footer-pp-logo"><img src="https://s3.us-east-2.amazonaws.com/teaminternet-map-prod/images/team-internet.jpg" alt="Team Internet" /></a>
                 <div class="footer-fineprint">
                 <span>{% ifequal page.type "Unsubscribe" %}By submitting this form, you will be unsubscribed from Team Internet.{% else %}
                 {% if not filename|split:'.'|nth:0 = "thanks" %}
