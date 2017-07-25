@@ -1,3 +1,5 @@
+{{ templateset.custom_fields|load_json }}
+
 {% if templateset.custom_fields.event_categories and event.custom_fields.event_category %}
 <div class="ak-event-categories">
   {% for category in event.custom_fields.event_category|force_list %}
