@@ -4,7 +4,7 @@ template custom fields = {{ templateset.custom_fields.categories }}
 {% if event.custom_fields.categories %}
 <div class="ak-event-categories">
   <strong>Event Type:</strong>
-  {% for category in event.fields.categories|split:"," %}
+  {% for category in event.custom_fields.categories|split:"," %}
     {{ category }},
     <strong>{{ templateset.custom_fields.categories|load_json|nth:category|nth:"label"|default:category }}</strong>
     {% if not forloop.last %}•{% endif %}
