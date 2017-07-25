@@ -1,10 +1,11 @@
 fields = {{ event.fields }}
-custom fields = {{ event.custom_fields }}
+custom fields = {{ event.custom_fields.categories }}
 
-{% if event.fields.categories %}
+{% if event.custom_fields.categories %}
 <div class="ak-event-categories">
   {% for category in event.fields.categories|force_list %}
-  <strong>{{ templateset.custom_fields.event_categories|load_json|nth:category|nth:"label"|default:category }}</strong>
+  {{ category }},
+  <strong>{{ templateset.custom_fields.categories|load_json|nth:category|nth:"label"|default:category }}</strong>
   {% if not forloop.last %}•{% endif %}
   {% endfor %}
 </div>
