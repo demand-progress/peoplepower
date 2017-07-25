@@ -1,9 +1,9 @@
-tenplate custom:{{ templateset.custom_fields|load_json }}
-event custom:{{ event.custom_fields|load_json }}
+fields = {{ event.fields }}
+custom fields = {{ event.custom_fields }}
 
-{% if templateset.custom_fields.event_categories and event.custom_fields.event_category %}
+{% if event.fields.categories %}
 <div class="ak-event-categories">
-  {% for category in event.custom_fields.event_category|force_list %}
+  {% for category in event.fields.categories|force_list %}
   <strong>{{ templateset.custom_fields.event_categories|load_json|nth:category|nth:"label"|default:category }}</strong>
   {% if not forloop.last %}•{% endif %}
   {% endfor %}
