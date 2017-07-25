@@ -6,7 +6,7 @@ template custom fields = {{ templateset.custom_fields.categories }}
   <strong>Event Type:</strong>
   {% for category in event.custom_fields.categories|split:"," %}
     {{ category }},
-    <strong>{{ templateset.custom_fields.categories|load_json|nth:category|nth:"label"|default:category }}</strong>
+    <strong>{{ templateset.custom_fields.categories|load_json|nth:category }}</strong>
     {% if not forloop.last %}•{% endif %}
   {% endfor %}
 </div>
