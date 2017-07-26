@@ -3,7 +3,7 @@
   <strong>Event Type:</strong>
   {% for category in event.custom_fields.categories|split:"," %}
     <strong>
-      {{ templateset.custom_fields.categories|load_json|nth:0 }}
+      {{ category }} {{ templateset.custom_fields.categories|load_json }}
     </strong>
     {% if not forloop.last %}•{% endif %}
   {% endfor %}
