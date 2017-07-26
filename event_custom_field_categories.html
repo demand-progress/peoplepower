@@ -1,7 +1,6 @@
 {% if event.custom_fields.categories %}
 <div class="ak-event-categories">
   <strong>Event Type:</strong>
-  custom fields: {{ templateset.custom_fields.categories }}
   {% with templateset.custom_fields.categories|load_json as all_categories %}
     {% for category in event.custom_fields.categories|split:"," %}
       <strong>
