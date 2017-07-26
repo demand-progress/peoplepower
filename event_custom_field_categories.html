@@ -3,7 +3,7 @@
   <strong>Event Type:</strong>
   fields: {{ templateset.fields.categories }}
   ciustom fields: {{ templateset.custom_fields.categories }}
-  {% with templateset.fields.categories|load_json as all_categories %} {{ all_categories.meetinghouse }}
+  {% with templateset.custom_fields.categories|load_json as all_categories %} {{ all_categories.meetinghouse }}
     {% for category in event.custom_fields.categories|split:"," %}
       <strong>
         {{ all_categories|nth:category }}
