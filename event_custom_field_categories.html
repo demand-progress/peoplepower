@@ -1,11 +1,13 @@
 {% if event.custom_fields.categories %}
 <div class="ak-event-categories">
   <strong>Event Type:</strong>
-  {% for category in event.custom_fields.categories|split:"," %}
-    <strong>
-      {{ category }} {{ templateset.custom_fields.categories|load_json|nth:"meetinghouse" }}
-    </strong>
-    {% if not forloop.last %}•{% endif %}
-  {% endfor %}
+  {% with templateset.custom_fields.categories|load_json as all_categories %} {{ all_categories.meetinghouse }}
+    {% for category in event.custom_fields.categories|split:"," %}
+      <strong>
+        {{ all_categories|nth:category }}
+      </strong>
+      {% if not forloop.last %}•{% endif %}
+    {% endfor %}
+  {% endwith %}
 </div>
 {% endif %}
