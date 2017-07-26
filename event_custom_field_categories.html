@@ -2,7 +2,9 @@
 <div class="ak-event-categories">
   <strong>Event Type:</strong>
   {% for category in event.custom_fields.categories|split:"," %}
-    <strong>{{ templateset.custom_fields.categories|load_json|nth:category }}</strong>
+    <strong>
+      {{ templateset.custom_fields.categories|load_json|nth:0 }}
+    </strong>
     {% if not forloop.last %}•{% endif %}
   {% endfor %}
 </div>
