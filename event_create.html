@@ -46,7 +46,7 @@
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_title" type="text" name="event_title">
+                            <input id="id_event_title" type="text" name="event_title" value="Meet with [insert your lawmakers name]'s office to discuss net neutrality.">
                         </div>
                     {% endif %}
 
@@ -192,7 +192,9 @@
                             will see this text before signing up
                         </span>
                     </label>
-                    <textarea id="id_event_public_description" name="event_public_description"></textarea>
+                    <textarea id="id_event_public_description" name="event_public_description">
+                        A meeting with [insert your lawmakers name]’s office to discuss the importance of strong net neutrality protections.
+                    </textarea>
                 </div>
 
                 <div>
