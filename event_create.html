@@ -41,7 +41,8 @@
 
             <div id="ak-event-info">
                 <h3>Event information</h3>
-                <div>If you can commit to host a meeting at a Congressional office with your Member of Congress and/or their staff to express opposition to FCC Chairman Ajit Pai's plan to eliminate net neutrality protections, please indicate that here -- hosting these meetings is one of the most impactful things you can do to help stop the rollback of net neutrality.</div>
+                <div>If you can commit to host a drop-in meeting at an in-district Congressional office, please indicate that here.</div>
+                <div>Plan your drop-in for a time that's easy for you and other volunteers to get to the office. Lunchtime and the end of the work day (and before the office closes) are often good times to gather a group to visit the office. </div>
                 <div>
                     {% if campaign.use_title %}
                         <div>
@@ -129,6 +130,7 @@
             <div id="event-info">
                 <h3>Event location</h3>
                 <div>This will be publicly visible</div>
+                <div>What’s the closest in-district office to you? You can get the contact info for House reps <a href='https://www.govtrack.us/congress/members'>here</a> and for senators <a href='https://docs.google.com/spreadsheets/d/1BkmbYX3UvEMJ6_r9TsBBaHxlWjzEkT-Hq2mL8KWiIN8/edit#gid=0'>here</a> if you’re not sure. Then input the office address closest to you. </div>
                 <div class="unknown_user">
                     <!--
                         This only shows if the user form includes all of the
@@ -143,7 +145,7 @@
                     {% with "event_" as input_name_prefix %}
                         <div>
                             <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue">
+                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your lawmakers name]’s office.'>
                         </div>
                         <div style="display:none;">
                             <label for="event_country">Country</label>
