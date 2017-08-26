@@ -40,10 +40,8 @@
             </div>
 
             <div id="ak-event-info">
-                <h3>Event information</h3>
-                <div>If you can commit to host a drop-in meeting at an in-district Congressional office, please indicate that here.</div>
-                <p></p>
-                <div>Plan your drop-in for a time that's easy for you and other volunteers to get to the office. Lunchtime and the end of the work day (and before the office closes) are often good times to gather a group to visit the office. </div>
+                <h3>Tell us about your event:</h3>
+                <div>Plan your meeting with your in-district Congressional office for a time that's easy for you and others to get to the office. Lunchtime and the end of the work day (and before the office closes) are often good times to gather a group to visit the office. </div>
                 <div>
                     {% if campaign.use_title %}
                         <div>
@@ -129,10 +127,11 @@
             {% endif %}
 
             <div id="event-info">
-                <h3>Event location</h3>
+                <h3>Where will your event be?</h3>
                 <div>This will be publicly visible</div>
-                <p></p>
-                <div>What’s the closest in-district office to you? You can get the contact info for House reps <a href='https://www.govtrack.us/congress/members'>here</a> and for senators <a href='https://docs.google.com/spreadsheets/d/1BkmbYX3UvEMJ6_r9TsBBaHxlWjzEkT-Hq2mL8KWiIN8/edit#gid=0'>here</a> if you’re not sure. Then input the office address closest to you. </div>
+                <p>
+                <div>Tell us where your meeting is so others can join you!</div>
+                <div>What’s the closest Congressional office to you? You can get the contact info for House representatives <a href='https://www.govtrack.us/congress/members'>here</a> and for senators <a href='https://docs.google.com/spreadsheets/d/1BkmbYX3UvEMJ6_r9TsBBaHxlWjzEkT-Hq2mL8KWiIN8/edit#gid=0'>here</a> if you’re not sure. Then input the office address closest to you.</div>
                 <div class="unknown_user">
                     <!--
                         This only shows if the user form includes all of the
@@ -183,7 +182,7 @@
             </div>
 
             <div id="event-info">
-                <h3>Event description</h3>
+                <h3>Describe your event to others:</h3>
                 <div class="ak-errs-below">
                     <label for="id_event_public_description">
                         Public description<span class="ak-required-flag">*</span>
@@ -226,10 +225,9 @@ A meeting with [insert your lawmakers name]’s office to discuss the importance
         {% if not update %}
             {% if form.host_requirements|is_nonblank or form.ground_rules|is_nonblank %}
                 <div id="ground-rules">
-                    <h3>Event rules</h3>
+                    <h3>Now, please review these Team internet rules:</h3>
 
                     {% if form.host_requirements %}
-                        <p>Here are the basic requirements for event hosts:</p>
                         <div class="ak-signoff-box ak-errs-below">
                             <blockquote>
                                 {% include_tmpl form.host_requirements %}
