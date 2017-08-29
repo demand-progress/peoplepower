@@ -25,7 +25,7 @@
             <ul>
                 {% for signup in signups %}
                 <li>
-                    <a href="{{ signup.url }}">{{ signup.event.title }} &mdash; March 11 - 4:30pm ET/1:30pm PT</a>
+                    <a href="{{ signup.url }}">{{ signup.event.title }} &mdash; {{ signup.event.starts_at|date:"l, F jS" }}</a>
                     {% if signup.role == 'host' %}
                     &nbsp;(you are hosting)
                     {% endif %}
