@@ -90,6 +90,10 @@
                         <input type="hidden" name="event_signup_ground_rules" value="1">
                     {% endif %}
                     <div>
+
+                    hello
+                    {% for category in event.custom_fields.event_category|force_list %}action_event_category={{ category }}{% endfor %}
+
                     <button type="submit" class="ak-submit-button">{% if update %}Update RSVP{% else %}RSVP to attend{% endif %}</button>
                     </div>
                 </div>
