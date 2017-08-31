@@ -92,7 +92,7 @@
                     <div>
 
                     {% for category in event.custom_fields.categories|split:"," %}
-                        {% ifequal category, "meetinghouse" %}
+                        {% ifequal category "meetinghouse" %}
                             Drop-in
                         {% else %}
                             Not drop-in
