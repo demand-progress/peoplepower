@@ -93,9 +93,7 @@
 
                     {% for category in event.custom_fields.categories|split:"," %}
                         {% ifequal category "meetinghouse" %}
-                            Drop-in
-                        {% else %}
-                            Not drop-in
+                            <b>* You are RSVP-ing to a drop-in meeting. This means you and others are stopping by the office to share your feelings on the importance of net neutrality and a free and open internet.</b>
                         {% endifequal %}
                     {% endfor %}
 

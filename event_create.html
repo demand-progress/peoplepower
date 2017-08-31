@@ -41,12 +41,13 @@
 
             <div id="ak-event-info">
                 <h3>Tell us about your event:</h3>
-                <div>Plan your meeting with your in-district Congressional office for a time that's easy for you and others to get to the office. Lunchtime and the end of the work day (and before the office closes) are often good times to gather a group to visit the office. </div>
+                <div>Plan your drop-in at your in-district Congressional office for a time that's easy for you and others to get to the office
+                 Lunchtime and the end of the work day (and before the office closes) are often good times to gather a group to visit the office. </div>
                 <div>
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_title" type="text" name="event_title" value="Meet with [insert your lawmakers name]'s office to discuss net neutrality.">
+                            <input id="id_event_title" type="text" name="event_title" value="Drop-in at [insert your lawmakers name]'s office to discuss net neutrality.">
                         </div>
                     {% endif %}
 
@@ -127,7 +128,7 @@
             {% endif %}
 
             <div id="event-info">
-                <h3>Where will your event be?</h3>
+                <h3>Tell us where your drop-in is so others can join you!</h3>
                 <div>This will be publicly visible</div>
                 <p>
                 <div>Tell us where your meeting is so others can join you!</div>
@@ -196,7 +197,7 @@
                         </span>
                     </label>
                     <textarea id="id_event_public_description" name="event_public_description">
-A meeting with [insert your lawmakers name]’s office to discuss the importance of strong net neutrality protections.
+A drop-in at [insert your lawmakers name]’s office to discuss the importance of strong net neutrality protections.
                     </textarea>
                 </div>
 
