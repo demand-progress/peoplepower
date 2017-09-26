@@ -95,6 +95,8 @@
 
     <script type="text/javascript">
         $(window).load(function() {
+            /* Store the window width */
+            var windowWidth = $(window).width();
 
             function truncate_read_more() {
                 var ak_text_expander_height = $('.ak-text-expander').height();
@@ -118,8 +120,17 @@
                     $(this).hide();
                 });
             }
+
             if ($('.ak-text-expander').length) {
-                $(window).on('resize', truncate_read_more);
+                $(window).on('resize', function() {
+                     // Check if the window width has actually changed and it's not just iOS triggering a resize event on scroll
+                    if ($(window).width() != windowWidth) {
+                        // Update the window width for next time
+                        windowWidth = $(window).width();
+
+                        truncate_read_more();
+                    }
+                });
                 truncate_read_more();
             }
         });
