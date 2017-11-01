@@ -27,6 +27,7 @@
             <thead>
                 <th class="toggle-col"><input type="checkbox" class="if-js toggle-all"></th>
                 <th class="name-col">Name</th>
+                <th class="phone-col">Email</th>
                 <th class="phone-col">Phone</th>
                 {% if event.is_in_past and signups.role == 'attendee' %}
                     <th class="attended-col">Attended</th>
@@ -39,6 +40,7 @@
                         <input type="checkbox" class="toggle" name="user_id" value="{{ signup.user.id }}">
                     </td>
                     <td class="name-col">{{ signup.user }}</td>
+                    <td class="phone-col">{{ signup.user.email }}</td>
                     <td class="phone-col">{{ signup.user.phone }}</td>
                     {% if event.is_in_past and signups.role == 'attendee' %}
                         <td class="attended-col">
