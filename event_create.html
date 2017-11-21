@@ -40,13 +40,13 @@
             </div>
 
             <div id="ak-event-info">
-                <h3>Tell us about your event:</h3>
-                <div>Plan your drop-in at your in-district Congressional office for a time that's easy for you and others to get to the office. Lunchtime and the end of the work day (and before the office closes) are often good times to gather a group to visit the office.</div>
+                <h3>Tell us about your protest:</h3>
+                <div>Plan your protest at a Verizon store for a time that's easy for you and others to get there. Lunchtime and the end of the work day (and before the store closes) are the best times.</div>
                 <div>
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_title" type="text" name="event_title" value="Drop-in at [insert your lawmakers name]'s office to discuss net neutrality.">
+                            <input id="id_event_title" type="text" name="event_title" value="Protest outside Verizon store against the rollback of net neutrality protections.">
                         </div>
                     {% endif %}
 
@@ -127,11 +127,11 @@
             {% endif %}
 
             <div id="event-info">
-                <h3>Tell us where your drop-in is so others can join you!</h3>
+                <h3>Tell us where your protest is so others can join you!</h3>
                 <div>This will be publicly visible</div>
                 <p>
-                <div>Tell us where your drop-in visit is so others can join you!</div>
-                <div>What’s the closest Congressional office to you? You can find the <a href='https://docs.google.com/spreadsheets/d/12s8pu0v9F-Q5oWlnlopRtrUYTWQLTOkmbXkPmxOiURY/edit#gid=249647634'>address and contact info for your Member of Congress’ office here</a>. Then input the office address closest to you.</div>
+                <div>Tell us where your protest is so others can join you!</div>
+                <div>Find a Verizon store close to you, and input the address -- be sure to pick a location that’s central, has good visibility, is easy to get to and near public transportation.</div>
                 <div class="unknown_user">
                     <!--
                         This only shows if the user form includes all of the
@@ -146,7 +146,7 @@
                     {% with "event_" as input_name_prefix %}
                         <div>
                             <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your lawmakers name]’s office.'>
+                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your neighborhood/city]’s Verizon store.'>
                         </div>
                         <div style="display:none;">
                             <label for="event_country">Country</label>
@@ -196,9 +196,9 @@
                         </span>
                     </label>
                     <textarea id="id_event_public_description" name="event_public_description">
-A drop-in at [insert your lawmakers name]’s office to discuss the importance of strong net neutrality protections.
+Protest at a Verizon store against the rollback of net neutrality protections.
 
-Join other Team Internet members to discuss the importance of strong net neutrality protections. We are doing our best to give staff a heads-up, but if they seem surprised to see you, please still discuss the importance of net neutrality.
+Join other Team Internet members at the protest. Internet users outraged by top Verizon lawyer turned FCC Chairman Ajit Pai’s plan to gut net neutrality are planning to protest at Verizon retail stores across the country on Thursday, December 7th, one week before an expected vote at the FCC. Protesters will make it clear to members of Congress that the time is now to stand for net neutrality, not Verizon’s bottom line.
                     </textarea>
                 </div>
 
