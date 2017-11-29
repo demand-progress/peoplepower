@@ -96,7 +96,9 @@
                     {% endif %}
 
                     <div>
-                        <label for="id_event_max_attendees">Maximum attendance</label>
+                        <label for="id_event_max_attendees">
+                            Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
+                        </label>
                         <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
                     </div>
 
