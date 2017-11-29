@@ -41,12 +41,12 @@
 
             <div id="ak-event-info">
                 <h3>Tell us about your protest:</h3>
-                <div>Plan your protest at a Verizon store for a time that's easy for you and others to get there. Lunchtime and the end of the work day (and before the store closes) are the best times.</div>
+                <div>Plan your protest at a Verizon store or Congressional office for a time that's easy for you and others to get there. Lunchtime and the end of the work day (and before the store or office closes) are the best times.</div>
                 <div>
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_title" type="text" name="event_title" value="Protest outside Verizon store against the rollback of net neutrality protections.">
+                            <input id="id_event_title" type="text" name="event_title" value="Protest against the rollback of net neutrality protections.">
                         </div>
                     {% endif %}
 
@@ -150,7 +150,7 @@
                     {% with "event_" as input_name_prefix %}
                         <div>
                             <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your neighborhood/city]’s Verizon store.'>
+                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your neighborhood/city]’s Verizon store or Congressional office.'>
                         </div>
                         <div style="display:none;">
                             <label for="event_country">Country</label>
@@ -200,9 +200,9 @@
                         </span>
                     </label>
                     <textarea id="id_event_public_description" name="event_public_description">
-Protest at a Verizon store against the rollback of net neutrality protections.
+Protest against the rollback of net neutrality protections.
 
-Join other Team Internet members at the protest. Internet users outraged by top Verizon lawyer turned FCC Chairman Ajit Pai’s plan to gut net neutrality are planning to protest at Verizon retail stores across the country on Thursday, December 7th, one week before an expected vote at the FCC. Protesters will make it clear to members of Congress that the time is now to stand for net neutrality, not Verizon’s bottom line. And please remember, this event is about protesting actions of Verizon executives, lobbyists and their supporters in Washington, not the employees at these stores.
+Join other Team Internet members at the protest. Internet users outraged by top Verizon lawyer turned FCC Chairman Ajit Pai’s plan to gut net neutrality are planning to protest across the country on Thursday, December 7th, one week before an expected vote at the FCC. Protesters will make it clear to members of Congress that the time is now to stand for net neutrality, not Verizon’s bottom line. And please remember, this event is about protesting actions of Verizon executives, lobbyists and their supporters in Washington, not the employees at these stores.
                     </textarea>
                 </div>
 
