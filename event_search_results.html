@@ -83,7 +83,8 @@
 {% endif %}
 <div style="margin-bottom: 20px;">
 <strong>Host:</strong>
-<div>{{ event.obj.creator }}</div>
+{% if cohosts %}
+<div>{{ cohosts }}</div>
 </div>
 
 {% include "event_custom_field_categories.html" %}
