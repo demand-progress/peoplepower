@@ -86,9 +86,14 @@
 <div>{{ event.obj.creator }}</div>
 </div>
 
-<strong>Test:</strong>
-<div>{{ event.obj }}</div>
-</div>
+
+<p>
+{{ event.title }} hosts include:
+{% for host in event.obj.host_signups %}
+{{ host.user }}
+{% endfor %}
+</p>
+
 
 {% include "event_custom_field_categories.html" %}
 
