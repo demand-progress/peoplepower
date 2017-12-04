@@ -85,7 +85,7 @@
 <strong>Host:</strong>
   <div>
     {% for host in event.obj.host_signups %}
-      <div>{% {{ host.user|stringify  }}.split(" ",1)[0] %}</div>
+      <div>{{ host.user|split(' ')|slice(0, 1)|join }}</div>
     {% endfor %}
   </div>
 </div>
