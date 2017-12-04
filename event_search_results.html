@@ -91,7 +91,7 @@
 {{ event.title }} hosts include:
 {% for host in event.obj.host_signups %}
 {% if host.users !== 'Team Internet' %}
-{{ host.user.split(" ",1)[0] }}
+{{ host.user }}.split(" ",1)[0]
 {% else %}
 {{ host.user }}
 {% endif %}
