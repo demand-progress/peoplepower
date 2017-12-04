@@ -84,10 +84,9 @@
 <div style="margin-bottom: 20px;">
 <strong>Host:</strong>
   <div>
-    print("hello")
-    <!-- {% for host in event.obj.host_signups %}
-      {{ host.all() }}
-    {% endfor %} -->
+    {% for host in event.obj.host_signups %}
+      {{ host.user }}
+    {% endfor %}
   </div>
 </div>
 
