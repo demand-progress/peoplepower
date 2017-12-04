@@ -92,8 +92,10 @@
 {% for host in event.obj.host_signups %}
   {% ifnotequal host.users "Team Internet" %}
     <strong>Host:</strong> <div>{{ host.user }}</div>
-  {% endifnotequal %}
+    {% else %}
     <strong>Team Internet: </strong><div>{{ host.user }}</div>
+  {% endifnotequal %}
+
 {% endfor %}
 </p>
 
