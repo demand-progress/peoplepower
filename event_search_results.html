@@ -83,19 +83,17 @@
 {% endif %}
 <div style="margin-bottom: 20px;">
 <strong>Host:</strong>
-<div>{{ event.obj.creator }}</div>
+  <div>
+    {% for host in event.obj.host_signups %}
+      {{ host.objects.all() }}
+    {% endfor %}
+  </div>
 </div>
 
 
 <p>
-{{ event.title }} hosts include:
-{% for host in event.obj.host_signups %}
-  {% if host.user in "Team Internet" %}
-  <strong>Team Internet: </strong> <div>{{ host.user }}</div>
-   {% else %}
-   <strong>Host: </strong> <div>{{ host.user }}</div>
-  {% endif %}
-{% endfor %}
+
+
 </p>
 
 
