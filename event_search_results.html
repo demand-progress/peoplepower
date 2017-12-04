@@ -85,7 +85,10 @@
 <strong>Host:</strong>
   <div>
     {% for host in event.obj.host_signups %}
-      <div>{{ host.user|truncatewords:1|cut:"..." }}</div>
+      {% ifnotequal host.user|stringformat:"s" "Team Internet" }
+        <div>{{ host.user|truncatewords:1|cut:"..." }}</div>
+      {% endifnotequal %}
+      <div>{{ host.user}}</div>
     {% endfor %}
   </div>
 </div>
