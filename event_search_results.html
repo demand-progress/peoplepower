@@ -85,7 +85,7 @@
 <strong>Host:</strong>
   <div>
     {% for host in event.obj.host_signups %}
-      {{ host.objects.all() }}
+      {{ host.all() }}
     {% endfor %}
   </div>
 </div>
