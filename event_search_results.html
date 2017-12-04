@@ -91,9 +91,9 @@
 {{ event.title }} hosts include:
 {% for host in event.obj.host_signups %}
   {% if host.users != 'Team Internet' %}
-    {{ host.user }}
+    <strong>Host:</strong> <div>{{ host.user }}</div>
   {% else %}
-    {{ host.user }}
+    <strong>Team Internet: </strong><div>{{ host.user }}</div>
   {% endif %}
 {% endfor %}
 </p>
