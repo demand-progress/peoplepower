@@ -153,7 +153,9 @@
 
 </form>
 {% if request.path == "/event/team-internet/2141" %}
-  <div class="event-comment">
+<div class="ak-grid-row">
+  <div class="ak-grid-col ak-grid-col-6-of-12">
+    <div class="event-comment">
     <div class="subA">Comment here to connect with other attendees and plan your protest!</div>
       <form id="add_Comment" action="javascript:void('');">
         <label>Name
@@ -168,6 +170,8 @@
         <button class="comment-submit">Add Comment</button>
       </form>
     </div>
+  </div>
+</div>
 {% endif %}
 {% endblock %}
 
