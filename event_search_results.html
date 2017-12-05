@@ -75,11 +75,13 @@
 </div>
 {% endif %}
 
-{% if campaign.show_attendee_count %}
-<div class="ak-event-attendee-count">
-    <strong>Attendee count:</strong>
-    <div class="ak-event-attendee-count-output">{{ event.attendee_count }} attendee{{ event.attendee_count|pluralize }}</div>
-</div>
+{% if request.path == "/event/team-internet/2141" %}
+  {% if event.attendee_count %}
+  <div class="ak-event-attendee-count">
+      <strong>Attendee count:</strong>
+      <div class="ak-event-attendee-count-output">{{ event.attendee_count }} attendee{{ event.attendee_count|pluralize }}</div>
+  </div>
+  {% endif %}
 {% endif %}
 
 
