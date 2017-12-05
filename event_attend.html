@@ -154,7 +154,9 @@
 </form>
 {% if request.path == "/event/team-internet/2141" %}
 <div class="ak-grid-row">
-  <div class="ak-grid-col ak-grid-col-6-of-12"></div>
+  <div class="ak-grid-col ak-grid-col-6-of-12">
+    <div id="posted_comments"></div>
+  </div>
   <div class="ak-grid-col ak-grid-col-6-of-12">
     <div class="event-comment">
     <div class="subA">Comment here to connect with other attendees and plan your protest!</div>
@@ -186,10 +188,14 @@
 {% block script_additions %}
 
 <script type="text/javascript">
+
+$(".comment-submit").on("click", function() {
+  console.log("I work!")
+})
 $( function () {
     var have_events = $('#id_have_events').val();
+    console.log(have_events)
     if ( ! have_events ) {
-      console.log('######### ', have_events)
         var args = actionkit.utils.getArgs();
         actionkit.forms.eventSearch(null, {
             event_id: args.event_id,
