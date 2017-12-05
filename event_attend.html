@@ -187,6 +187,7 @@ $(".comment-submit").on("click", function() {
 })
 $( function () {
     var have_events = $('#id_have_events').val();
+    console.log(have_events)
     if ( ! have_events ) {
         var args = actionkit.utils.getArgs();
         actionkit.forms.eventSearch(null, {
