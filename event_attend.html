@@ -158,18 +158,25 @@
   <div class="ak-grid-col ak-grid-col-6-of-12">
     <div class="event-comment">
     <div class="subA">Comment here to connect with other attendees and plan your protest!</div>
-      <form id="add_Comment" action="javascript:void('');">
-        <label>Name
-          <input id="name" type="string" name="name">
-        </label><br>
-        <label>Email
-          <input id="email" type="string" name="email">
-        </label><br>
-        <label>Comment
-         <textarea id="comment" name="comment" style="width: 478px; height: 120px;"></textarea>
-        </label>
-        <button class="comment-submit">Add Comment</button>
-      </form>
+        <div id="disqus_thread"></div>
+        <script>
+
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+             var disqus_config = function () {
+             this.page.url = "{{request.path}}";  // Replace PAGE_URL with your page's canonical URL variable
+             this.page.identifier = "{{event.id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+             };
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://team-internet-events.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
     </div>
   </div>
 </div>
