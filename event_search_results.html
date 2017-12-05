@@ -94,9 +94,8 @@
 {% if {{ request.path }} == '/event/team-internet/2141' %}
   Test path: {{ request.path }}
   {% else %}
-  Other path: {{}}
+  Other path: {{ request.path }}
 {% endif %}
-{{request.path}}
 
 <p>
 
