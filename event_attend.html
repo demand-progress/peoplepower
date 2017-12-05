@@ -105,23 +105,7 @@
 	   <div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://act.demandprogress.org/event/{{ campaign.local_name }}/{{event.id}}/signup/?source=fbshare" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
 <div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="https://twitter.com/home?status=Join%20me%20for%20a%20Team%20Internet%20Event%20in%20{{ event.city_etc_no_postal }}%20https%3A//act.demandprogress.org/event/{{campaign.local_name}}/{{event.id}}/signup/?source=twshare" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
 	</div>
-  {% if request.path == "/event/team-internet/2141" %}
-    <div class="event-comment">
-      <div class="subA">Comment here to connect with other attendees and plan your protest!</div>
-        <form id="add_Comment" action="javascript:void('');">
-          <label>Name
-            <input id="name" type="string" name="name">
-          </label><br>
-          <label>Email
-            <input id="email" type="string" name="email">
-          </label><br>
-          <label>Comment
-           <textarea id="comment" name="comment"></textarea>
-          </label>
-          <button class="comment-submit">Add Comment</button>
-        </form>
-      </div>
-  {% endif %}
+
             </div>
         </div>
 <div class="ak-grid-row">
@@ -168,19 +152,32 @@
     {% endif %}
 
 </form>
-
+{% if request.path == "/event/team-internet/2141" %}
+  <div class="event-comment">
+    <div class="subA">Comment here to connect with other attendees and plan your protest!</div>
+      <form id="add_Comment" action="javascript:void('');">
+        <label>Name
+          <input id="name" type="string" name="name">
+        </label><br>
+        <label>Email
+          <input id="email" type="string" name="email">
+        </label><br>
+        <label>Comment
+         <textarea id="comment" name="comment"></textarea>
+        </label>
+        <button class="comment-submit">Add Comment</button>
+      </form>
+    </div>
+{% endif %}
 {% endblock %}
 
 {% block script_additions %}
 
 <script type="text/javascript">
-  $('.comment-submit').on('click', function(){
-    console.log(have_events)
-    console.log('this works!')
-  })
 $( function () {
     var have_events = $('#id_have_events').val();
     if ( ! have_events ) {
+      console.log('######### ', have_events)
         var args = actionkit.utils.getArgs();
         actionkit.forms.eventSearch(null, {
             event_id: args.event_id,
