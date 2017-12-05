@@ -87,7 +87,7 @@
 <strong>Host:</strong>
   <div>
     {% for host in event.obj.host_signups %}
-      {% if host.users != “Team Internet" %}
+      {% if host.user != “Team Internet" %}
       <div>{{ host.user|truncatewords:1|cut:"..." }}</div>
       {% endif %}
     {% endfor %}
