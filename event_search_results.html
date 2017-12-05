@@ -81,6 +81,8 @@
     <div class="ak-event-attendee-count-output">{{ event.attendee_count }} attendee{{ event.attendee_count|pluralize }}</div>
 </div>
 {% endif %}
+
+
 <div style="margin-bottom: 20px;">
 <strong>Host:</strong>
   <div>
@@ -89,7 +91,7 @@
     {% endfor %}
   </div>
 </div>
-
+{{request.path}}
 
 <p>
 
