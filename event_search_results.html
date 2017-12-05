@@ -75,9 +75,9 @@
 </div>
 {% endif %}
 
-{{request.path}}
+{% request.path == "/event/team-internet/2141" %}
 {% if request.path == "/event/team-internet/2141" %}
- Does this work?
+ <div>Does this work?</div>
   {% if event.attendee_count %}
   <div class="ak-event-attendee-count">
       <strong>Attendee count:</strong>
