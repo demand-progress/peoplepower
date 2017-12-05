@@ -94,10 +94,11 @@
 {% if request.path == "/event/team-internet/1374" %}
   Test path: {{ request.path }}
   {% for host in event.obj.host_signups %}
-    {%  if host.user != "Team internet"%}
+    {%  if host.user != "Team Internet"%}
       <div>{{ host.user|truncatewords:1|cut:"..." }}</div>
-    {% endif %}
+      {% else %}
       outside of if: {{ host.user }}
+    {% endif %}  
   {% endfor %}
 {% endif %}
 
