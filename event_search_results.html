@@ -76,6 +76,7 @@
 {% endif %}
 
 {% if request.path == "/event/team-internet/2141" %}
+  {% event.attendee_count %}
   {% if event.attendee_count %}
   <div class="ak-event-attendee-count">
       <strong>Attendee count:</strong>
