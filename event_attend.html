@@ -118,7 +118,7 @@
           <label>Comment
            <textarea id="comment" name="comment"></textarea>
           </label>
-          <input type="submit" value="Add Comment">
+          <button class="comment-submit">Add Comment</button>
         </form>
       </div>
   {% endif %}
@@ -185,7 +185,9 @@ $( function () {
         });
     }
 } );
-console.log('jquery works', $)
+$(.comment-submit).on('click', function(){
+  console.log(this works!)
+})
 </script>
 
 {% endblock %}
