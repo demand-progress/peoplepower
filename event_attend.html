@@ -41,7 +41,10 @@
 
         <div class="ak-grid-row">
             <div class="ak-grid-col ak-grid-col-6-of-12">
-
+              {% if '/event/team-internet/2141/signup/' == request.path and page.custom_fields.image_url%}
+              				<div>{{ request.path }}</div>
+              				<img class="ak-featured-img" src="{{page.custom_fields.image_url}}">
+              				{%  endif %}
                 <div id="event-search-results">
                     <!-- If you're embedding this page on your own site, remove everything from here... -->
                     {% with 1 as hide_map %}
