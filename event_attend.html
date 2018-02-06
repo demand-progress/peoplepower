@@ -41,10 +41,12 @@
 
         <div class="ak-grid-row">
             <div class="ak-grid-col ak-grid-col-6-of-12">
-              {% if '/event/team-internet/2640/signup/' == request.path and page.custom_fields.image_url %}
-              				<div>{{ request.path }}</div>
-              				<img class="ak-featured-img" src="{{ page.custom_fields.image_url }}">
-              				{%  endif %}
+            {% if '/event/team-internet/2640/signup/' == request.path %}
+            <img class="ak-featured-img" src="{{ page.custom_fields.image_url }}">
+            <div id="eventType" data-js-vars={% report 'event_type' with args.event_id as event_id %}></div>
+            <img  id="protest" class="ak-featured-img" src="{{ event.campaign.create_page.custom_fields.protest_image }}" style="display:none">
+            <img  id="dropin" class="ak-featured-img" src="{{ event.campaign.create_page.custom_fields.image_url }}" style="display:none">
+            {%  endif %}
                 <div id="event-search-results">
                     <!-- If you're embedding this page on your own site, remove everything from here... -->
                     {% with 1 as hide_map %}
@@ -163,6 +165,22 @@
 {% block script_additions %}
 
 <script type="text/javascript">
+
+(function(window, document, undefined){
+window.onload = init;
+  function init(){
+    // the code to be called when the dom has loaded
+    // #document has its nodes
+  var eventType = JSON.parse(document.getElementById('eventType').getAttribute('data-js-vars') || '{}'); 
+   
+  if(eventType[1][0] === 'officehours'){
+	document.getElementById("protest").style.display='block';
+    } else {
+	document.getElementById("dropin").style.display='block'
+   } 
+  }
+})(window, document, undefined);
+
 $( function () {
     var have_events = $('#id_have_events').val();
     var args = actionkit.utils.getArgs();
@@ -173,7 +191,7 @@ $( function () {
             zip: args.zip,
             page: $('#id_page').val()
         });
-    
+	}
 } );
 </script>
 
