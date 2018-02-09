@@ -41,12 +41,10 @@
 
         <div class="ak-grid-row">
             <div class="ak-grid-col ak-grid-col-6-of-12">
-            {% if '/event/team-internet/2640/signup/' == request.path %}
-            <img class="ak-featured-img" src="{{ page.custom_fields.image_url }}">
             <div id="eventType" data-js-vars={% report 'event_type' with args.event_id as event_id %}></div>
             <img  id="protest" class="ak-featured-img" src="{{ event.campaign.create_page.custom_fields.protest_image }}" style="display:none">
-            <img  id="dropin" class="ak-featured-img" src="{{ event.campaign.create_page.custom_fields.image_url }}" style="display:none">
-            {%  endif %}
+            <img  id="dropin" class="ak-featured-img" src="{{ event.campaign.create_page.custom_fields.dropIn_image }}" style="display:none">
+
                 <div id="event-search-results">
                     <!-- If you're embedding this page on your own site, remove everything from here... -->
                     {% with 1 as hide_map %}
@@ -173,7 +171,7 @@ window.onload = init;
     // #document has its nodes
   var eventType = JSON.parse(document.getElementById('eventType').getAttribute('data-js-vars') || '{}'); 
    
-  if(eventType[1][0] === 'officehours'){
+  if(eventType[1][0] === 'protestrally'){
 	document.getElementById("protest").style.display='block';
     } else {
 	document.getElementById("dropin").style.display='block'
