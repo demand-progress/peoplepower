@@ -27,12 +27,18 @@
     {% endif %}
 
     <div class="ak-grid-col {% if page.custom_fields.featured_image %}ak-grid-col-9-of-12{% else %}ak-grid-col-12-of-12{% endif %}">
-
-        {% if not update and form.host_text %}
-            <div class="ak-page-content">
-                {% include_tmpl form.host_text %}
-            </div>
-        {% endif %}
+        
+      {% if not update and form.host_text %}      
+        <div class="ak-page-content">
+        {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
+            <p>Lawmakers are home from Washington, D.C. February 19-23 for a congressional recess. This a crucial time to show up in force at their local offices and put real pressure on them to support the Congressional Review Act (CRA) effort to reverse the FCC’s repeal of net neutrality.</p>
+            <p>Tell us which lawmaker you are visiting and at which office location so we can post it on the <a href="https://events.battleforthenet.com/">map</a> and recruit others to join you.</p>
+            <p>Don't worry if you’ve never done anything like this before–we’ll provide you with everything you’ll need. If you have questions about how to complete this form, reach out to us at <a href="mailto:support@demandprogress.org">support@demandprogress.org.</a></p>
+          {% else %}
+             {% include_tmpl form.host_text %}
+          {% endif %}
+        </div>
+      {% endif %}  
 
         <div id="event-create-form" class="ak-styled-fields ak-labels-before {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
             <ul class="compact" id="ak-errors"></ul>
