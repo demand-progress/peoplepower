@@ -46,6 +46,152 @@
             <div id="ak-user-info">
                 {% include "./user_form_wrapper.html" %}
             </div>
+            
+            {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
+             <div id="event-info">
+                 <h3>Tell us where your event is so others can join you!</h3>
+                 <p>We need just one more vote in the Senate and we already have 100 cosponsors in the House, but need 218 representatives total on our side to win. </p>
+
+                 <p>Use this net neutrality CRA <a href="https://www.battleforthenet.com/scoreboard/">scoreboard</a> to find out which one of your lawmaker’s still has not come out in support of the net neutrality CRA vote, then find their local office <a href="https://docs.google.com/spreadsheets/u/1/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0">here</a>. </p>
+
+                 <div class="unknown_user">
+                     <!--
+                         This only shows if the user form includes all of the
+                         event fields (e.g., address1, country if you use it)
+                     -->
+                     <input id="id_at_my_house" type="checkbox" class="checkbox" name="at_my_house" value="1">
+                     <label class="ak-checkbox-label" for="id_at_my_house">
+                         Use my home address
+                     </label>
+                 </div>
+                 <div>
+                     {% with "event_" as input_name_prefix %}
+                         <div>
+                             <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
+                             <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your Senator/ Representative]’s Congressional office.'>
+                         </div>
+                         <div style="display:none;">
+                             <label for="event_country">Country</label>
+                             {% include "./country_select.html" %}
+                         </div>
+                         <div>
+                             <label for="id_event_address1">Street address<span class="ak-required-flag">*</span></label>
+                             <input id="id_event_address1" type="text" name="event_address1">
+                         </div>
+                         <div>
+                             <label for="id_event_city">City<span class="ak-required-flag">*</span></label>
+                             <input id="id_event_city" type="text" name="event_city" required>
+                         </div>
+                         <div>
+                             <label for="id_event_state">State<span class="ak-required-flag">*</span></label>
+                             {% include "./state_select.html" %}
+                         </div>
+                         <div>
+                             <label for="id_event_postal">Postal<span class="ak-required-flag">*</span></label>
+                             <input id="id_event_postal" type="text" name="event_postal">
+                         </div>
+                         <div>
+                             <label for="id_event_zip">ZIP<span class="ak-required-flag">*</span></label>
+                             <input id="id_event_zip" type="text" name="event_zip" required>
+                         </div>
+                         <!-- <div><label for="id_event_phone">Contact phone:</label> <input id="id_event_phone" type="tel" name="event_phone" size="12"></div> -->
+                         {% if campaign.show_address1 %}
+                             <p style="font-weight:200;width: 65%;margin-left: 35%;">NOTE: Event addresses are public.</p>
+                         {% endif %}
+                     {% endwith %}
+                 </div>
+
+             </div>
+       
+        <div id="ak-event-info">
+                 <h3>Tell us about your event:</h3>
+                 <div>Tell us which lawmaker you are visiting.</div>
+                 <div>
+                     {% if campaign.use_title %}
+                         <div>
+                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
+                             <input id="id_event_title" type="text" name="event_title" value="Be an Internet hero, [Senator/ Representative (name)]">
+                         </div>
+                     {% endif %}
+
+                     {% with event_starts_at as date_field %}
+                         <div id="id_event_starts_at_row">
+                             <label for="id_event_starts_at">Start date/time</label>
+                             {% include "./date_picker.html" %}
+                         </div>
+
+
+                         <script type="text/javascript">
+                             // Replace animation w/instant show, because anim
+                             // breaks tabbing quickly past the date field.
+                             jQuery.fn.showFast = function(speed, callback) {
+                                 this.show()
+                                 callback()
+                             }
+                             // Removing datepicker doesn't break anything, and
+                             // it might even be useful -- I can imagine users
+                             // being confused when the picker covers up other
+                             // key form fields.
+                             $(function() {
+                                 $("#id_event_starts_at_date").datepicker( {
+                                     minDate: 0, showAnim: 'showFast'
+                                 } )
+                             } );
+                         </script>
+
+                     {% endwith %}
+
+                     {% if campaign.use_ends_at %}
+                         {% with event_ends_at as date_field %}
+                             <div>
+                                 <label for="id_event_ends_at">End time</label>
+                                 {% include "./date_picker.html" %}
+                             </div>
+                         {% endwith %}
+                     {% endif %}
+
+                     {% if campaign.allow_private %}
+                         <div id="id_event_is_private_row" class="ak-checkbox-field">
+                             <input id="id_event_is_private" type="checkbox" class="checkbox" name="event_is_private" value="1">
+                             <label class="ak-checkbox-label" for="id_event_is_private">
+                                 Make event private
+                             </label>
+                         </div>
+                     {% endif %}
+
+                     <div>
+                         <label for="id_event_max_attendees">
+                             Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
+                         </label>
+                         <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
+                     </div>
+                 {% include_tmpl form.custom_field_html %}
+                 </div>
+             </div>
+       
+             {% if templateset.custom_fields.event_categories %}
+             <div id="event-categories">
+               <h3>Event categories</h3>
+               {% with templateset.custom_fields.event_categories|load_json as categories_config %}
+               {% for category in categories_config %}
+               <div class="ak-err-below">
+                 <input id="id_action_event_category_{{ category }}"
+                        class="checkbox" type="checkbox"
+                        name="action_event_category"
+                        value="{{ category }}"
+                        {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category %}checked{% endif %}
+                 >
+                 <label for="id_action_event_category_{{ category }}"
+                        class="ak-checkbox-label ak-event-category-checkbox-label">
+                   {{ categories_config|nth:category|nth:"label" }}
+                 </label>
+               </div>
+               {% endfor %}
+               {% endwith %}
+             </div>
+             {% endif %}
+
+        {% else %}
 
             <div id="ak-event-info">
                 <h3>Tell us about your protest:</h3>
@@ -192,7 +338,7 @@
                 </div>
 
             </div>
-
+          {% endif %}
             <div id="event-info">
                 <h3>Describe your event to others:</h3>
                 <div class="ak-errs-below">
