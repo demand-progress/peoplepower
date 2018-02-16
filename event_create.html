@@ -165,7 +165,13 @@
                          </label>
                          <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
                      </div>
-                 {% include_tmpl form.custom_field_html %}
+                     <div id="ak-fieldbox-action_categories" class="ak-err-below">
+                        <label for="id_action_categories">
+                            Event Types
+                        </label>
+                			<option value="protestcongress" selected="">Event at Congressional office</option> 
+                		</select>
+    	             </div>
                  </div>
              </div>
        
