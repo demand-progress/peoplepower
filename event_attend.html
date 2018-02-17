@@ -76,7 +76,10 @@
                         {% endif %}
 
                     </div>
-
+                  <label for="potential_host" class="ak-err-below">
+                    <span style="display:inline-block"><input value="1" name="action_potential_host" type="checkbox"></span>
+                    <span>I'd like to help make this event awesome.</span>
+                  </label>
                     {% if form.ground_rules|is_nonblank and not update %}
                         <div style="margin: 10px 0">
                             <input id="id_event_signup_ground_rules" type="checkbox" name="event_signup_ground_rules" value="1">
