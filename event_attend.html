@@ -76,10 +76,13 @@
                         {% endif %}
 
                     </div>
-                  <label for="potential_host" class="ak-err-below">
-                    <span style="display:inline-block"><input value="{{ args.event_id }}" name="action_potential_host" type="checkbox"></span>
-                    <span>I'd like to help make this event awesome.</span>
-                  </label>
+                    <div class="ak-err-below">
+                      <label class="ak-checkbox-label" style="display:block; padding-left:15px;text-indext:-15px">
+                      <input value="{{ args.event_id }}" name="action_potential_host" style="width:13px; height:13px;padding:0;margin:0;vertical-align:bottom;position:relative;top:-1px;*overflow:hidden" type="checkbox">
+                        I'd like to help organize this event with others.
+                      </label>
+                    </div>
+          
                     {% if form.ground_rules|is_nonblank and not update %}
                         <div style="margin: 10px 0">
                             <input id="id_event_signup_ground_rules" type="checkbox" name="event_signup_ground_rules" value="1">
