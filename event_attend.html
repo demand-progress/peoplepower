@@ -41,21 +41,26 @@
 
         <div class="ak-grid-row">
             <div class="ak-grid-col ak-grid-col-6-of-12">
-            <div id="eventType" data-js-vars={% report 'event_type' with args.event_id as event_id %}></div>
-            <img  id="protest" class="ak-featured-img" src="{{ event.campaign.create_page.custom_fields.protest_image }}" style="display:none">
-            <img  id="dropin" class="ak-featured-img" src="{{ event.campaign.create_page.custom_fields.dropIn_image }}" style="display:none">
-
-                <div id="event-search-results">
-                    <!-- If you're embedding this page on your own site, remove everything from here... -->
-                    {% with 1 as hide_map %}
-                    {% include "./event_search_results.html" %}
-                    {% endwith %}
-                    <!-- ...to here -->
-                </div>
-
-
-                <ul class="compact" id="ak-errors"></ul>
-
+              {% with event_type=event.custom_fields.categories|default:"" %}
+              {% if event_type|contains:"protestrally" %}
+              <img src="{{ event.campaign.create_page.custom_fields.protest_image }}">
+              {% elif event_type|contains:"protestcongress" %}
+              <img src="{{ event.campaign.create_page.custom_fields.dropIn_image }}">
+              {% else %}
+              <!-- a default if you want it -->
+              {% endif %}
+              {% endwith %}
+              
+            <div id="event-search-results">
+                <!-- If you're embedding this page on your own site, remove everything from here... -->
+                {% with 1 as hide_map %}
+                {% include "./event_search_results.html" %}
+                {% endwith %}
+                <!-- ...to here -->
+            </div> 
+             
+              <ul class="compact" id="ak-errors"></ul>
+              
             </div>
 
             <div class="ak-grid-col ak-grid-col-6-of-12">
@@ -169,21 +174,6 @@
 {% block script_additions %}
 
 <script type="text/javascript">
-
-(function(window, document, undefined){
-window.onload = init;
-  function init(){
-    // the code to be called when the dom has loaded
-    // #document has its nodes
-  var eventType = JSON.parse(document.getElementById('eventType').getAttribute('data-js-vars') || '{}'); 
-   
-  if(eventType[1][0] === 'protestrally'){
-	document.getElementById("protest").style.display='block';
-    } else {
-	document.getElementById("dropin").style.display='block'
-   } 
-  }
-})(window, document, undefined);
 
 $( function () {
     var have_events = $('#id_have_events').val();
