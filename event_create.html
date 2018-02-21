@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{% if request.get_full_path == '/event/team-internet_create/create/?source=map' %}
+{% if request.get_full_path == '/event/team-internet/create/?source=map' %}
 {% include "./event_attend_source_map.html" %}
 {% else %}
 <form class="ak-form norecognize" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}" accept-charset="utf-8">
