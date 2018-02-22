@@ -3,14 +3,15 @@
 
 {% block content %}
 
+{% if request.get_full_path == '/event/team-internet/create/?source=map' %}
+{% include "./event_attend_source_map.html" %}
+{% else %}
 <form class="ak-form norecognize" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}" accept-charset="utf-8">
     <input type="hidden" name="page" value="{{ page.name }}">
 
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">
-            {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
-              <h2>TELL US ABOUT YOUR UPCOMING DROP-IN VISIT</h2>
-            {% elif not update %}
+            {% if not update %}
                 <h2>{{ page.title }}</h2>
             {% else %}
                 <h2>Update Event Information</h2>
@@ -30,13 +31,7 @@
         
       {% if not update and form.host_text %}      
         <div class="ak-page-content">
-        {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
-            <p>Lawmakers are home from Washington, D.C. February 19-23 for a congressional recess. This a crucial time to show up in force at their local offices and put real pressure on them to support the Congressional Review Act (CRA) effort to reverse the FCC’s repeal of net neutrality.</p>
-            <p>Tell us which lawmaker you are visiting and at which office location so we can post it on the <a href="https://events.battleforthenet.com/">map</a> and recruit others to join you.</p>
-            <p>Don't worry if you’ve never done anything like this before–we’ll provide you with everything you’ll need. If you have questions about how to complete this form, reach out to us at <a href="mailto:support@demandprogress.org">support@demandprogress.org.</a></p>
-          {% else %}
              {% include_tmpl form.host_text %}
-          {% endif %}
         </div>
       {% endif %}  
 
@@ -46,176 +41,6 @@
             <div id="ak-user-info">
                 {% include "./user_form_wrapper.html" %}
             </div>
-            
-            {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
-             <div id="event-info">
-                 <h3>Tell us where your event is so others can join you!</h3>
-                 <p>We need just one more vote in the Senate and we already have 100 cosponsors in the House, but need 218 representatives total on our side to win. </p>
-
-                 <p>Use this net neutrality CRA <a href="https://www.battleforthenet.com/scoreboard/">scoreboard</a> to find out which one of your lawmaker’s still has not come out in support of the net neutrality CRA vote, then find their local office <a href="https://docs.google.com/spreadsheets/u/1/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0">here</a>. </p>
-
-                 <div class="unknown_user">
-                     <!--
-                         This only shows if the user form includes all of the
-                         event fields (e.g., address1, country if you use it)
-                     -->
-                     <input id="id_at_my_house" type="checkbox" class="checkbox" name="at_my_house" value="1">
-                     <label class="ak-checkbox-label" for="id_at_my_house">
-                         Use my home address
-                     </label>
-                 </div>
-                 <div>
-                     {% with "event_" as input_name_prefix %}
-                         <div>
-                             <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
-                             <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your Senator/ Representative]’s Congressional office.'>
-                         </div>
-                         <div style="display:none;">
-                             <label for="event_country">Country</label>
-                             {% include "./country_select.html" %}
-                         </div>
-                         <div>
-                             <label for="id_event_address1">Street address<span class="ak-required-flag">*</span></label>
-                             <input id="id_event_address1" type="text" name="event_address1">
-                         </div>
-                         <div>
-                             <label for="id_event_city">City<span class="ak-required-flag">*</span></label>
-                             <input id="id_event_city" type="text" name="event_city" required>
-                         </div>
-                         <div>
-                             <label for="id_event_state">State<span class="ak-required-flag">*</span></label>
-                             {% include "./state_select.html" %}
-                         </div>
-                         <div>
-                             <label for="id_event_postal">Postal<span class="ak-required-flag">*</span></label>
-                             <input id="id_event_postal" type="text" name="event_postal">
-                         </div>
-                         <div>
-                             <label for="id_event_zip">ZIP<span class="ak-required-flag">*</span></label>
-                             <input id="id_event_zip" type="text" name="event_zip" required>
-                         </div>
-                         <!-- <div><label for="id_event_phone">Contact phone:</label> <input id="id_event_phone" type="tel" name="event_phone" size="12"></div> -->
-                         {% if campaign.show_address1 %}
-                             <p style="font-weight:200;width: 65%;margin-left: 35%;">NOTE: Event addresses are public.</p>
-                         {% endif %}
-                     {% endwith %}
-                 </div>
-
-             </div>
-       
-        <div id="ak-event-info">
-                 <h3>Tell us about your event:</h3>
-                 <div>Tell us which lawmaker you are visiting.</div>
-                 <div>
-                     {% if campaign.use_title %}
-                         <div>
-                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                             <input id="id_event_title" type="text" name="event_title" value="Be an Internet hero, [Senator/ Representative (name)]">
-                         </div>
-                     {% endif %}
-
-                     {% with event_starts_at as date_field %}
-                         <div id="id_event_starts_at_row">
-                             <label for="id_event_starts_at">Start date/time</label>
-                             {% include "./date_picker.html" %}
-                         </div>
-
-
-                         <script type="text/javascript">
-                             // Replace animation w/instant show, because anim
-                             // breaks tabbing quickly past the date field.
-                             jQuery.fn.showFast = function(speed, callback) {
-                                 this.show()
-                                 callback()
-                             }
-                             // Removing datepicker doesn't break anything, and
-                             // it might even be useful -- I can imagine users
-                             // being confused when the picker covers up other
-                             // key form fields.
-                             $(function() {
-                                 $("#id_event_starts_at_date").datepicker( {
-                                     minDate: 0, showAnim: 'showFast'
-                                 } )
-                             } );
-                         </script>
-
-                     {% endwith %}
-
-                     {% if campaign.use_ends_at %}
-                         {% with event_ends_at as date_field %}
-                             <div>
-                                 <label for="id_event_ends_at">End time</label>
-                                 {% include "./date_picker.html" %}
-                             </div>
-                         {% endwith %}
-                     {% endif %}
-
-                     {% if campaign.allow_private %}
-                         <div id="id_event_is_private_row" class="ak-checkbox-field">
-                             <input id="id_event_is_private" type="checkbox" class="checkbox" name="event_is_private" value="1">
-                             <label class="ak-checkbox-label" for="id_event_is_private">
-                                 Make event private
-                             </label>
-                         </div>
-                     {% endif %}
-
-                     <div>
-                         <label for="id_event_max_attendees">
-                             Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
-                         </label>
-                         <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
-                     </div>
-                     <div id="ak-fieldbox-action_categories" class="ak-err-below">
-                       <label for="id_action_categories">
-                          Event Types
-                          </label>
-                      <select multiple="" name="action_categories" id="id_action_categories" class="ak-userfield-input">
-                    <!--<option value="meetinghouse">Drop-in at Congressional office</option> 
-                    <option value="canvassing">Canvass/Door Knocking</option> 
-                    <option value="petitions">Collecting Petitions</option>
-                    <option value="deliverhouse">Delivery of Letters or Petitions to Elected Official, House</option> 
-                    <option value="deliversenate">Delivery of Letters or Petitions to Elected Official, Senate</option> 
-                    <option value="signs">Distribute Signs</option> 
-                    <option value="dropinshouse">Drop-ins at Congressional Office, House</option> 
-                    <option value="dropinssenate">Drop-ins at Congressional Office, Senate</option> 
-                    <option value="officehours">Office Hours</option> -->
-                        <option value="protestrally">Event at Verizon store</option> 
-                        <option value="protestcongress"  SELECTED>Event at Congressional office</option> 
-                    <!--<option value="sitin">Sit-In</option> 
-                    <option value="letters">Submitting Letters to the Editor</option> -->
-                    <option value="townhall">Town Hall</option> 
-                    <!--<option value="teletownhall">Tele-Town Hall</option> 
-                    <option value="emptychairtownhall">Empty Chair Town Hall</option> 
-                    <option value="visibility">Visibility Event</option> -->
-                        <option value="other">Other</option>
-                      </select>
-    	             </div>
-                 </div>
-             </div>
-       
-             {% if templateset.custom_fields.event_categories %}
-             <div id="event-categories">
-               <h3>Event categories</h3>
-               {% with templateset.custom_fields.event_categories|load_json as categories_config %}
-               {% for category in categories_config %}
-               <div class="ak-err-below">
-                 <input id="id_action_event_category_{{ category }}"
-                        class="checkbox" type="checkbox"
-                        name="action_event_category"
-                        value="{{ category }}"
-                        {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category %}checked{% endif %}
-                 >
-                 <label for="id_action_event_category_{{ category }}"
-                        class="ak-checkbox-label ak-event-category-checkbox-label">
-                   {{ categories_config|nth:category|nth:"label" }}
-                 </label>
-               </div>
-               {% endfor %}
-               {% endwith %}
-             </div>
-             {% endif %}
-
-        {% else %}
 
             <div id="ak-event-info">
                 <h3>Tell us about your protest:</h3>
@@ -304,7 +129,6 @@
               {% endfor %}
               {% endwith %}
             </div>
-            {% endif %}
 
             <div id="event-info">
                 <h3>Tell us where your protest is so others can join you!</h3>
@@ -377,31 +201,16 @@
                             will see this text before signing up
                         </span>
                     </label>
-                    {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
-                      <textarea id="id_event_public_description" name="event_public_description">
-RSVP now to visit your lawmaker’s office sometime between 12:00pm-1:00pm on February 22nd and drop-off materials encouraging your lawmaker to be an Internet hero by supporting the congressional effort to save net neutrality.
-
-Lawmakers are home from Washington, D.C. February 19-23 for a congressional recess. This a crucial time to show up in force at their local offices and put real pressure on them to support the Congressional Review Act (CRA) effort to reverse the FCC’s repeal of net neutrality.
-
-Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office during your visit and we’ll connect you with others in your community attending. Maybe you’ll run into a friend or neighbor but if you’re serious about this event, let us know so we can help you make it awesome!
-                      </textarea>
-                    {% else %}
                       <textarea id="id_event_public_description" name="event_public_description">  
 Protest against the rollback of net neutrality protections.
                         
 Join other Team Internet members at the protest. Internet users outraged by top Verizon lawyer turned FCC Chairman Ajit Pai’s plan to gut net neutrality are planning to protest across the country on Thursday, December 7th, one week before an expected vote at the FCC. Protesters will make it clear to members of Congress that the time is now to stand for net neutrality, not Verizon’s bottom line. And please remember, this event is about protesting actions of Verizon executives, lobbyists and their supporters in Washington, not the employees at these stores.
                       </textarea>
-                    {% endif %}
                 </div>
 
                 <div>
                   <label for="id_event_directions">Directions to event</label>
-                    {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
-                      <textarea id="id_event_directions" name="event_directions">[If you want others to join you for this visit, decide on a place and location to meet up and let people know here.]</textarea>
-                    {% else %}
-                      <textarea id="id_event_directions" name="event_directions"></textarea>
-                    {% endif %}
-                        
+                      <textarea id="id_event_directions" name="event_directions"></textarea>                       
                 </div>
 
                 <div style="display:none;">
@@ -417,7 +226,7 @@ Join other Team Internet members at the protest. Internet users outraged by top 
     </div>
 
 </div>
-
+ {% endif %}
 <div class="ak-grid-row">
     <div class="ak-grid-col ak-grid-col-12-of-12">
         {% if not update %}
@@ -482,7 +291,6 @@ Join other Team Internet members at the protest. Internet users outraged by top 
 </div>
 
 </form>
-
 {% endblock %}
 
 {% block script_additions %}
@@ -689,3 +497,4 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 </script>
 
 {% endblock %}
+
