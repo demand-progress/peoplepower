@@ -42,13 +42,17 @@
         <div class="ak-grid-row">
             <div class="ak-grid-col ak-grid-col-6-of-12">
               {% with event_type=event.custom_fields.categories|default:"" %}
-              {% if event_type|contains:"protestrally" %}
-              <img src="{{ event.campaign.create_page.custom_fields.protest_image }}">
-              {% elif event_type|contains:"protestcongress" %}
-              <img src="{{ event.campaign.create_page.custom_fields.dropIn_image }}">
-              {% else %}
-              <!-- a default if you want it -->
-              {% endif %}
+                {% if event_type|contains:"protestrally" %}
+                    <img src="{{ event.campaign.create_page.custom_fields.protest_event_image }}">
+                {% elif event_type|contains:"protestcongress" %}
+                    <img src="{{ event.campaign.create_page.custom_fields.congress_event_image }}">
+                {% elif event_type|contains:"townhall" %}
+                    <img src="{{ event.campaign.create_page.custom_fields.townhall_event_image }}">
+                {% elif event_type|contains:"other" %}
+                    <img src="{{ event.campaign.create_page.custom_fields.other_event_image }}">
+                {% else %}
+                <!-- a default if you want it -->
+                {% endif %}
               {% endwith %}
               
             <div id="event-search-results">
