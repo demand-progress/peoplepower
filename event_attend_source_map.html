@@ -278,4 +278,66 @@ Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office du
         </div>
         
     </div>
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            {% if not update %}
+                {% if form.host_requirements|is_nonblank or form.ground_rules|is_nonblank %}
+                    <div id="ground-rules">
+                        <h3>Now, please review these Team internet rules:</h3>
+    
+                        {% if form.host_requirements %}
+                            <div class="ak-signoff-box ak-errs-below">
+                                <blockquote>
+                                    {% include_tmpl form.host_requirements %}
+                                </blockquote>
+                                <div>
+                                    <input id="id_event_host_requirements" type="checkbox" name="event_host_requirements" value="1">
+                                    <label class="ak-checkbox-label" for="id_event_host_requirements">
+                                        <strong>Required:</strong>
+                                        I can meet the requirements for hosting an event.
+                                    </label>
+                                </div>
+                            </div>
+                        {% else %}
+                            <input type="hidden" name="event_host_requirements" value="1">
+                        {% endif %}
+    
+                        {% if form.ground_rules|is_nonblank %}
+                            <p>Here are the rules for hosting events:</p>
+                            <div class="ak-signoff-box ak-errs-below">
+                                <blockquote>
+                                    {% include_tmpl form.ground_rules %}
+                                </blockquote>
+                                <div>
+                                    <input id="id_event_host_ground_rules" type="checkbox" name="event_host_ground_rules" value="1">
+                                    <label class="ak-checkbox-label" for="id_event_host_ground_rules">
+                                        <strong>Required:</strong>
+                                        I agree to the rules for hosting an event.
+                                    </label>
+                                </div>
+                            </div>
+                        {% else %}
+                            <input type="hidden" name="event_host_ground_rules" value="1">
+                        {% endif %}
+                    </div>
+    
+                {% else %}
+                    <input type="hidden" name="event_host_requirements" value="1">
+                    <input type="hidden" name="event_host_ground_rules" value="1">
+                {% endif %}
+            {% else %}
+                <input type="hidden" name="event_host_requirements" value="1">
+                <input type="hidden" name="event_host_ground_rules" value="1">
+            {% endif %}
+    
+            {% if not update %}
+            <p>
+                <strong>Next, we&rsquo;ll review your event for approval.</strong>
+            </p>
+            {% endif %}
+    
+            <input id="id_submit" type="submit" value="{% if update %}Update event{% else %}Continue to next step: Confirm event{% endif %}" class="ak-submit-button">
+    
+        </div>
+    </div>
 </div>
