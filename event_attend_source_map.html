@@ -288,7 +288,15 @@ Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office du
                         {% if form.host_requirements %}
                             <div class="ak-signoff-box ak-errs-below">
                                 <blockquote>
-                                    {% include_tmpl form.host_requirements %}
+                                    <ul>
+                                        <li>Team Internet events are open to the public.</li>
+                                        <li>Events must have a specific street address so they can be placed on the map.</li>
+                                        <li>Event descriptions should specify support for Net Neutrality. We don’t post generic meetings or events.</li>
+                                        <li>We promote events that are free to the public. If a contribution is required (rather than optional) for attendance, it won’t be approved. Events that appear to be fundraising focused will not be posted.</li>
+                                        <li>Events including obscenities or offensive language won’t be approved.</li>
+                                        <li>Team Internet is nonpartisan. If your event refers to defeating or electing candidates for office or promoting a political party, it can’t be approved.&nbsp;</li>
+                                        <li>Candidates for office and political parties can post events if the focus is on organizing support for Net Neutrality as opposed to electioneering.</li>
+                                        </ul>
                                 </blockquote>
                                 <div>
                                     <input id="id_event_host_requirements" type="checkbox" name="event_host_requirements" value="1">
