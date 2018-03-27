@@ -111,7 +111,7 @@
                                     {{ date_field.default_date }}
                                   {% else %}
                                     {% if request.get_full_path == '/event/team-internet/create/?source=map' %}
-                                    <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="02/22/2018" format="date">
+                                    <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" format="date">
                                       {% else %}
                                     <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}" format="date">  
                                     {% endif %}
