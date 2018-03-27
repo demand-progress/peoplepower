@@ -184,19 +184,12 @@
                              </label>
                          </div>
                      {% endif %}
-
-                     <div>
-                         <label for="id_event_max_attendees">
-                             Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
-                         </label>
-                         <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
-                     </div>
-                     <div id="ak-fieldbox-action_categories" class="ak-err-below">
+                     <!--<div id="ak-fieldbox-action_categories" class="ak-err-below">
                        <label for="id_action_categories">
                           Event Types
                           </label>
                       <select multiple="" name="action_categories" id="id_action_categories" class="ak-userfield-input">
-                    <!--<option value="meetinghouse">Drop-in at Congressional office</option> 
+                    <option value="meetinghouse">Drop-in at Congressional office</option> 
                     <option value="canvassing">Canvass/Door Knocking</option> 
                     <option value="petitions">Collecting Petitions</option>
                     <option value="deliverhouse">Delivery of Letters or Petitions to Elected Official, House</option> 
@@ -204,18 +197,18 @@
                     <option value="signs">Distribute Signs</option> 
                     <option value="dropinshouse">Drop-ins at Congressional Office, House</option> 
                     <option value="dropinssenate">Drop-ins at Congressional Office, Senate</option> 
-                    <option value="officehours">Office Hours</option> -->
+                    <option value="officehours">Office Hours</option>
                         <option value="protestrally">Event at Verizon store</option> 
                         <option value="protestcongress"  SELECTED>Event at Congressional office</option> 
-                    <!--<option value="sitin">Sit-In</option> 
-                    <option value="letters">Submitting Letters to the Editor</option> -->
+                    <option value="sitin">Sit-In</option> 
+                    <option value="letters">Submitting Letters to the Editor</option>
                     <option value="townhall">Town Hall</option> 
-                    <!--<option value="teletownhall">Tele-Town Hall</option> 
+                    <option value="teletownhall">Tele-Town Hall</option> 
                     <option value="emptychairtownhall">Empty Chair Town Hall</option> 
-                    <option value="visibility">Visibility Event</option> -->
+                    <option value="visibility">Visibility Event</option>
                         <option value="other">Other</option>
                       </select>
-    	             </div>
+    	             </div>!-->
                  </div>
              </div>
        
@@ -257,17 +250,19 @@
                     </label>
                    
                       <textarea id="id_event_public_description" name="event_public_description">
-RSVP now to visit your lawmaker’s office sometime between 12:00pm-1:00pm on February 27nd and drop-off materials encouraging your lawmaker to be an Internet hero by supporting the congressional effort to save net neutrality.
+RSVP now to sign-wave for net neutrality outside your lawmaker’s office on Thursday, April 5th at 12PM and drop-off materials explaining why they need to vote for the CRA and protect real net neutrality rules.
 
-Lawmakers are home from Washington, D.C. February 19-23 for a congressional recess. This a crucial time to show up in force at their local offices and put real pressure on them to support the Congressional Review Act (CRA) effort to reverse the FCC’s repeal of net neutrality.
+Net neutrality is not dead yet and it’s not too late to save it, but the clock is ticking! Congress will soon vote on the Congressional Review Act (CRA) resolution to reverse the FCC’s repeal, and before the CRA comes up for a vote, we need to make sure that as many lawmakers as possible are on our side. 
 
-Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office during your visit and we’ll connect you with others in your community attending. Maybe you’ll run into a friend or neighbor but if you’re serious about this event, let us know so we can help you make it awesome!
+Lawmakers are home for a congressional recess until April 6th so this a crucial opportunity to show up in force and put real pressure on them to support the CRA effort. 
+
+Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office during your visit and we’ll connect you with others in your community attending through a pre-event call. 
                       </textarea>
                     </div>
 
                     <div>
                     <label for="id_event_directions">Directions to event</label>             
-                        <textarea id="id_event_directions" name="event_directions">[If you want others to join you for this visit, decide on a place and location to meet up and let people know here.]</textarea>                    
+                        <textarea id="id_event_directions" name="event_directions"></textarea>                    
                     </div>
 
                     <div style="display:none;">
