@@ -214,44 +214,45 @@
                  </div>
              </div>
        
-             {% if templateset.custom_fields.event_categories %}
-             <div id="event-categories">
-               <h3>Event categories</h3>
-               {% with templateset.custom_fields.event_categories|load_json as categories_config %}
-               {% for category in categories_config %}
-               <div class="ak-err-below">
-                 <input id="id_action_event_category_{{ category }}"
-                        class="checkbox" type="checkbox"
-                        name="action_event_category"
-                        value="{{ category }}"
-                        {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category %}checked{% endif %}
-                 >
-                 <label for="id_action_event_category_{{ category }}"
-                        class="ak-checkbox-label ak-event-category-checkbox-label">
-                   {{ categories_config|nth:category|nth:"label" }}
-                 </label>
-               </div>
-               {% endfor %}
-               {% endwith %}
-             </div>
-             {% endif %}
+            {% if templateset.custom_fields.event_categories %}
+                <div id="event-categories">
+                <h3>Event categories</h3>
+                {% with templateset.custom_fields.event_categories|load_json as categories_config %}
+                {% for category in categories_config %}
+                    <div class="ak-err-below">
+                        <input id="id_action_event_category_{{ category }}"
+                            class="checkbox" type="checkbox"
+                            name="action_event_category"
+                            value="{{ category }}"
+                            {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category %}checked{% endif %}
+                        >
+                        <label for="id_action_event_category_{{ category }}"
+                            class="ak-checkbox-label ak-event-category-checkbox-label">
+                        {{ categories_config|nth:category|nth:"label" }}
+                        </label>
+                    </div>
+                {% endfor %}
+                {% endwith %}
+                </div>
+                {% endif %}
 
-            <div id="event-info">
-                <h3>Describe your event to others:</h3>
-                <div class="ak-errs-below">
-                    <label for="id_event_public_description">
-                        Public description<span class="ak-required-flag">*</span>
-                        <br><span class="ak-normal">
-                            {% if campaign.allow_private %}
-                                For public events, people
-                            {% else %}
-                                People
-                            {% endif %}
-                            will see this text before signing up
-                        </span>
-                    </label>
-                   
-                      <textarea id="id_event_public_description" name="event_public_description">
+                <div id="event-info" >
+                    <div style="display:none;">
+                        <h3>Describe your event to others:</h3>
+                        <div class="ak-errs-below" >
+                            <label for="id_event_public_description">
+                                Public description<span class="ak-required-flag">*</span>
+                                <br><span class="ak-normal">
+                                    {% if campaign.allow_private %}
+                                        For public events, people
+                                    {% else %}
+                                        People
+                                    {% endif %}
+                                    will see this text before signing up
+                                </span>
+                            </label>
+                        
+                            <textarea id="id_event_public_description" name="event_public_description">
 RSVP now to sign-wave for net neutrality outside your lawmaker’s office on Thursday, April 5th at 12PM and drop-off materials explaining why they need to vote for the CRA and protect real net neutrality rules.
 
 Net neutrality is not dead yet and it’s not too late to save it, but the clock is ticking! Congress will soon vote on the Congressional Review Act (CRA) resolution to reverse the FCC’s repeal, and before the CRA comes up for a vote, we need to make sure that as many lawmakers as possible are on our side. 
@@ -259,7 +260,8 @@ Net neutrality is not dead yet and it’s not too late to save it, but the clock
 Lawmakers are home for a congressional recess until April 6th so this a crucial opportunity to show up in force and put real pressure on them to support the CRA effort. 
 
 Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office during your visit and we’ll connect you with others in your community attending through a pre-event call. 
-                      </textarea>
+                            </textarea>
+                        </div>
                     </div>
 
                     <div>
