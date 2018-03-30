@@ -148,69 +148,46 @@
                          </div>
 
                          <script type="text/javascript">
-                             // Replace animation w/instant show, because anim
-                             // breaks tabbing quickly past the date field.
-                             jQuery.fn.showFast = function(speed, callback) {
-                                 this.show()
-                                 callback()
-                             }
-                             // Removing datepicker doesn't break anything, and
-                             // it might even be useful -- I can imagine users
-                             // being confused when the picker covers up other
-                             // key form fields.
-                             $(function() {
-                                 $("#id_event_starts_at_date").datepicker( {
-                                     minDate: 0, showAnim: 'showFast'
-                                 } )
-                             } );
-                         </script>
+                            // Replace animation w/instant show, because anim
+                            // breaks tabbing quickly past the date field.
+                            jQuery.fn.showFast = function(speed, callback) {
+                                this.show()
+                                callback()
+                            }
+                            // Removing datepicker doesn't break anything, and
+                            // it might even be useful -- I can imagine users
+                            // being confused when the picker covers up other
+                            // key form fields.
+                            $(function() {
+                                $("#id_event_starts_at_date").datepicker( {
+                                    minDate: 0, showAnim: 'showFast'
+                                } )
+                            } );
+                        </script>
 
-                     {% endwith %}
+                    {% endwith %}
 
-                     {% if campaign.use_ends_at %}
-                         {% with event_ends_at as date_field %}
-                             <div>
-                                 <label for="id_event_ends_at">End time</label>
-                                 {% include "./date_picker.html" %}
-                             </div>
-                         {% endwith %}
-                     {% endif %}
+   
 
-                     {% if campaign.allow_private %}
-                         <div id="id_event_is_private_row" class="ak-checkbox-field">
-                             <input id="id_event_is_private" type="checkbox" class="checkbox" name="event_is_private" value="1">
-                             <label class="ak-checkbox-label" for="id_event_is_private">
-                                 Make event private
-                             </label>
-                         </div>
-                     {% endif %}
-                     <div id="ak-fieldbox-action_categories" class="ak-err-below">
-                       <label for="id_action_categories">
-                          Event Types
-                          </label>
-                      <select multiple="" name="action_categories" id="id_action_categories" class="ak-userfield-input">
-                    <option value="meetinghouse">Drop-in at Congressional office</option> 
-                    <option value="canvassing">Canvass/Door Knocking</option> 
-                    <option value="petitions">Collecting Petitions</option>
-                    <option value="deliverhouse">Delivery of Letters or Petitions to Elected Official, House</option> 
-                    <option value="deliversenate">Delivery of Letters or Petitions to Elected Official, Senate</option> 
-                    <option value="signs">Distribute Signs</option> 
-                    <option value="dropinshouse">Drop-ins at Congressional Office, House</option> 
-                    <option value="dropinssenate">Drop-ins at Congressional Office, Senate</option> 
-                    <option value="officehours">Office Hours</option>
-                        <option value="protestrally">Event at Verizon store</option> 
-                        <option value="protestcongress"  SELECTED>Event at Congressional office</option> 
-                    <option value="sitin">Sit-In</option> 
-                    <option value="letters">Submitting Letters to the Editor</option>
-                    <option value="townhall">Town Hall</option> 
-                    <option value="teletownhall">Tele-Town Hall</option> 
-                    <option value="emptychairtownhall">Empty Chair Town Hall</option> 
-                    <option value="visibility">Visibility Event</option>
-                        <option value="other">Other</option>
-                      </select>
-    	             </div>
-                 </div>
-             </div>
+                    {% if campaign.allow_private %}
+                        <div id="id_event_is_private_row" class="ak-checkbox-field">
+                            <input id="id_event_is_private" type="checkbox" class="checkbox" name="event_is_private" value="1">
+                            <label class="ak-checkbox-label" for="id_event_is_private">
+                                Make event private
+                            </label>
+                        </div>
+                    {% endif %}
+
+                    <div>
+                        <label for="id_event_max_attendees">
+                            Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
+                        </label>
+                        <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
+                    </div>
+
+                    {% include_tmpl form.custom_field_html %}
+                </div>
+            </div>  
        
             {% if templateset.custom_fields.event_categories %}
                 <div id="event-categories">
