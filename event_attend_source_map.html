@@ -35,13 +35,13 @@
             </div>
 
             <div id="ak-event-info">
-                <h3>Tell us about your protest:</h3>
-                <div>Plan your protest at a Verizon store or Congressional office for a time that's easy for you and others to get there. Lunchtime and the end of the work day (and before the store or office closes) are the best times.</div>
+                <h3>Tell us about your event:</h3>
+                <div>Tell us which lawmaker you are visiting by adding their name to the "Event Name" section below. For example, before submitting your event, the event name should read, "It’s recess but we’re not playing on net neutrality Senator John Kennedy," or, "It’s recess but we’re not playing on net neutrality Representative Mike Coffman."</div>
                 <div>
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_title" type="text" name="event_title" value="Protest against the rollback of net neutrality protections.">
+                            <input id="id_event_title" type="text" name="event_title" value="It’s recess but we’re not playing on net neutrality [Senator/ Representative (name)]">
                         </div>
                     {% endif %}
 
@@ -94,7 +94,7 @@
                         <label for="id_event_max_attendees">
                             Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
                         </label>
-                        <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
+                        <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="1000" size=3>
                     </div>
 
                     <input id="id_action_categories" type="hidden" name="action_categories" value="protestcongress">
@@ -149,12 +149,8 @@
             {% endif %}
 
             <div id="event-info">
-                <h3>Tell us where your protest is so others can join you!</h3>
-                <p><a href='https://www.verizonwireless.com/stores' target="_blank">Click here</a> to find a Verizon Wireless store near you. Do not select an authorized retailer (identified by a blue icon) for your protest location. Your protest will ONLY be approved if it’s at a Verizon Wireless store identified by a red icon <a href='https://www.verizonwireless.com/stores' target="_blank">here</a>. Also, your event will not be approved if it is in a mall, as malls tend to be private property.</p>
-
-                <p>Be sure to pick a location that’s central, has good visibility, is easy to get to and/or near public transportation.</p>
-
-                <p>If there is no Verizon Wireless store near you, protest at your <a href='https://docs.google.com/spreadsheets/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0' target="_blank">member of Congress’s local office.</a></p>
+                <h3>Tell us where your event is so others can join you!</h3>
+                <p>Use <a target="_blank" href="https://docs.google.com/spreadsheets/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0">this</a> to find out which one of your lawmaker’s still has not come out in support of the net neutrality CRA resolution and find their in-district office address. Need help figuring out who represents you in Congress? Click <a target="_blank" href="https://callyourrep.co/">here</a>. Preserving the open Internet matters to the overwhelming majority of Americans, so it’s important that we persuade as many members of Congress as possible to vote for the CRA resolution and thank those that already are. </p>
 
                 <div class="unknown_user">
                     <!--
@@ -220,9 +216,13 @@
                         </span>
                     </label>
                     <textarea id="id_event_public_description" name="event_public_description">
-Protest against the rollback of net neutrality protections.
+RSVP now to sign-wave for net neutrality outside your lawmaker’s office on Thursday, April 5th at 12PM and drop-off materials explaining why they need to vote for the CRA and protect real net neutrality rules.
 
-Join other Team Internet members at the protest. Internet users outraged by top Verizon lawyer turned FCC Chairman Ajit Pai’s plan to gut net neutrality are planning to protest across the country on Thursday, December 7th, one week before an expected vote at the FCC. Protesters will make it clear to members of Congress that the time is now to stand for net neutrality, not Verizon’s bottom line. And please remember, this event is about protesting actions of Verizon executives, lobbyists and their supporters in Washington, not the employees at these stores.
+Net neutrality is not dead yet and it’s not too late to save it, but the clock is ticking! Congress will soon vote on the Congressional Review Act (CRA) resolution to reverse the FCC’s repeal, and before the CRA comes up for a vote, we need to make sure that as many lawmakers as possible are on our side. 
+
+Lawmakers are home for a congressional recess until April 6th so this a crucial opportunity to show up in force and put real pressure on them to support the CRA effort. 
+
+Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office during your visit and we’ll connect you with others in your community attending through a pre-event call.
                     </textarea>
                 </div>
 
