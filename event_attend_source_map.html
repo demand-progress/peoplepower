@@ -182,10 +182,35 @@
                         <label for="id_event_max_attendees">
                             Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
                         </label>
-                        <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
+                        <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="1000" size=3>
                     </div>
 
-                    {% include_tmpl form.custom_field_html %}
+                    <input id="id_action_categories" type="hidden" name="action_categories" value="protestcongress">
+<div id="ak-fieldbox-action_categories" class="ak-err-below">
+        <label for="id_action_categories">
+            Event Types
+        </label>
+		<select multiple="" name="action_categories" id="id_action_categories" class="ak-userfield-input">
+<option value="meetinghouse">Drop-in at Congressional office</option> 
+<option value="canvassing">Canvass/Door Knocking</option> 
+<option value="petitions">Collecting Petitions</option>
+<option value="deliverhouse">Delivery of Letters or Petitions to Elected Official, House</option> 
+<option value="deliversenate">Delivery of Letters or Petitions to Elected Official, Senate</option> 
+<option value="signs">Distribute Signs</option> 
+<option value="dropinshouse">Drop-ins at Congressional Office, House</option> 
+<option value="dropinssenate">Drop-ins at Congressional Office, Senate</option> 
+<option value="officehours">Office Hours</option>
+			<option value="protestrally" SELECTED>Event at Verizon store</option> 
+			<option value="protestcongress">Event at Congressional office</option> 
+<option value="sitin">Sit-In</option> 
+<option value="letters">Submitting Letters to the Editor</option>
+<option value="townhall">Town Hall</option> 
+<option value="teletownhall">Tele-Town Hall</option> 
+<option value="emptychairtownhall">Empty Chair Town Hall</option> 
+<option value="visibility">Visibility Event</option> 
+			<option value="other">Other</option>
+		</select>
+	</div> 
                 </div>
             </div>  
        
