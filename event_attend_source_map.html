@@ -1,175 +1,61 @@
-<form class="ak-form norecognize" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}"
-    accept-charset="utf-8">
+<form class="ak-form norecognize" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}" accept-charset="utf-8">
     <input type="hidden" name="page" value="{{ page.name }}">
 
-    <div class="ak-grid-row">
-        <div class="ak-grid-col ak-grid-col-12-of-12">
-            {% if not update %}
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+        {% if not update %}
             <h2>{{ page.title }}</h2>
-            {% else %}
+        {% else %}
             <h2>Update Event Information</h2>
-            {% endif %}
-        </div>
+        {% endif %}
     </div>
+</div>
 
-    <div class="ak-grid-row ak-grid-row-inverted">
+<div class="ak-grid-row ak-grid-row-inverted">
 
-        {% if page.custom_fields.featured_image %}
-        <div class="ak-grid-col ak-grid-col-3-of-12">
-            <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
-        </div>
+    {% if page.custom_fields.featured_image %}
+    <div class="ak-grid-col ak-grid-col-3-of-12">
+        <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+    </div>
+    {% endif %}
+
+    <div class="ak-grid-col {% if page.custom_fields.featured_image %}ak-grid-col-9-of-12{% else %}ak-grid-col-12-of-12{% endif %}">
+
+        {% if not update and form.host_text %}
+            <div class="ak-page-content">
+                {% include_tmpl form.host_text %}
+            </div>
         {% endif %}
 
-        <div class="ak-grid-col {% if page.custom_fields.featured_image %}ak-grid-col-9-of-12{% else %}ak-grid-col-12-of-12{% endif %}">
+        <div id="event-create-form" class="ak-styled-fields ak-labels-before {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+            <ul class="compact" id="ak-errors"></ul>
 
-            {% if not update and form.host_text %}
-            <div class="ak-page-content">
-                <p>Lawmakers are home from Washington, D.C. until April 6th for a congressional recess so we’re joining forces
-                    at noon on April 5th all around the country at our members of Congress’ office to rally for net neutrality.
-                    This a crucial opportunity to put real pressure on our lawmakers to support the Congressional Review
-                    Act (CRA) resolution to reverse the FCC’s repeal of net neutrality rules.</p>
-                <p>Tell us which lawmaker you are visiting and at which office location so we can post it on the
-                    <a target="_blank"
-                        href="https://events.battleforthenet.com/">map</a> and recruit others to join you.</p>
-                <p>Don't worry if you’ve never done anything like this before. We’ll provide you with everything you’ll need,
-                    including a coaching call for event hosts and a pre-event call for hosts and attendees. We’ll also help
-                    recruit people to your event—though you should definitely encourage your friends to join you! If you
-                    have questions about how to complete this form, reach out to us at
-                    <a href="mailto:support@demandprogress.org">support@demandprogress.org.</a>
-                </p>
+            <div id="ak-user-info">
+                {% include "./user_form_wrapper.html" %}
             </div>
-            {% endif %}
 
-            <div id="event-create-form" class="ak-styled-fields ak-labels-before {{templateset.custom_fields.field_errors_class|default:"
-                ak-errs-below "}}">
-                <ul class="compact" id="ak-errors"></ul>
+            <div id="ak-event-info">
+                <h3>Tell us about your protest:</h3>
+                <div>Plan your protest at a Verizon store or Congressional office for a time that's easy for you and others to get there. Lunchtime and the end of the work day (and before the store or office closes) are the best times.</div>
+                <div>
+                    {% if campaign.use_title %}
+                        <div>
+                            <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
+                            <input id="id_event_title" type="text" name="event_title" value="Protest against the rollback of net neutrality protections.">
+                        </div>
+                    {% endif %}
 
-                <div id="ak-user-info">
-                    {% include "./user_form_wrapper.html" %}
-                </div>
-
-                <div id="event-info">
-                    <h3>Tell us where your event is so others can join you!</h3>
-                    <p>Use
-                        <a target="_blank" href="https://docs.google.com/spreadsheets/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0">this</a> to find out which one of your lawmaker’s still has not come out in support of the net neutrality
-                        CRA resolution and find their in-district office address. Need help figuring out who represents you
-                        in Congress? Click
-                        <a target="_blank" href="https://callyourrep.co/">here</a>. Preserving the open Internet matters to the overwhelming majority of Americans, so it’s
-                        important that we persuade as many members of Congress as possible to vote for the CRA resolution
-                        and thank those that already are. </p>
-                    <div class="unknown_user">
-                        <!--
-                         This only shows if the user form includes all of the
-                         event fields (e.g., address1, country if you use it)
-                     -->
-                        <input id="id_at_my_house" type="checkbox" class="checkbox" name="at_my_house" value="1">
-                        <label class="ak-checkbox-label" for="id_at_my_house">
-                            Use my home address
-                        </label>
-                    </div>
-                    <div>
-                        {% with "event_" as input_name_prefix %}
-                        <div>
-                            <label for="id_event_venue">Venue
-                                <span class="ak-required-flag">*</span>
-                            </label>
-                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your Senator/ Representative]’s Congressional office.'>
-                        </div>
-                        <div style="display:none;">
-                            <label for="event_country">Country</label>
-                            {% include "./country_select.html" %}
-                        </div>
-                        <div>
-                            <label for="id_event_address1">Street address
-                                <span class="ak-required-flag">*</span>
-                            </label>
-                            <input id="id_event_address1" type="text" name="event_address1">
-                        </div>
-                        <div>
-                            <label for="id_event_city">City
-                                <span class="ak-required-flag">*</span>
-                            </label>
-                            <input id="id_event_city" type="text" name="event_city" required>
-                        </div>
-                        <div>
-                            <label for="id_event_state">State
-                                <span class="ak-required-flag">*</span>
-                            </label>
-                            {% include "./state_select.html" %}
-                        </div>
-                        <div>
-                            <label for="id_event_postal">Postal
-                                <span class="ak-required-flag">*</span>
-                            </label>
-                            <input id="id_event_postal" type="text" name="event_postal">
-                        </div>
-                        <div>
-                            <label for="id_event_zip">ZIP
-                                <span class="ak-required-flag">*</span>
-                            </label>
-                            <input id="id_event_zip" type="text" name="event_zip" required>
-                        </div>
-                        <!-- <div><label for="id_event_phone">Contact phone:</label> <input id="id_event_phone" type="tel" name="event_phone" size="12"></div> -->
-                        {% if campaign.show_address1 %}
-                        <p style="font-weight:200;width: 65%;margin-left: 35%;">NOTE: Event addresses are public.</p>
-                        {% endif %} 
-                        {% endwith %}
-                    </div>
-
-                </div>
-
-                <div id="ak-event-info">
-                    <h3>Tell us about your event:</h3>
-                    <div>Tell us which lawmaker you are visiting by adding their name to the "Event Name" section below. For example,
-                        before submitting your event, the event name should read, "It’s recess but we’re not playing on net
-                        neutrality Senator John Kennedy," or, "It’s recess but we’re not playing on net neutrality Representative
-                        Mike Coffman."</div>
-                    <div>
-                        {% if campaign.use_title %}
-                        <div>
-                            <label for="id_event_title">Event name
-                                <span class="ak-required-flag">*</span>
-                            </label>
-                            <input id="id_event_title" type="text" name="event_title" value="It’s recess but we’re not playing on net neutrality [Senator/ Representative (name)]">
-                        </div>
-                        {% endif %} {% with event_starts_at as date_field %}
+                    {% with event_starts_at as date_field %}
                         <div id="id_event_starts_at_row">
                             <label for="id_event_starts_at">Start date/time</label>
-                            <span class="ak-datetime">
-                                {% if date_field.hidden_date %}
-                                <input type="hidden" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}"> 
-                                {% else %} 
-                                {% if date_field.static_date %}
-                                <input type="hidden" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}"> 
-                                {{ date_field.default_date }} 
-                                {% else %}
-                                <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date"
-                                    value="{{ date_field.default_date }}" format="date"> 
-                                    {% endif %} 
-                                    {% if not date_field.hidden_time %} at {% endif %} 
-                                    {% endif %} 
-                                    {% if date_field.hidden_time%}
-                                <input type="hidden" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" value="{{ date_field.default_time }}"> 
-                                {% else %} 
-                                {% if date_field.static_time %}
-                                <input type="hidden" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" format="time" value="{{ date_field.default_time }}">
-                                <input type="hidden" name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm" value="{{ date_field.default_ampm }}"> {{ date_field.default_time }} {{ date_field.default_ampm }}
-                                 {% else %}
-                                <input type="text" placeholder="hh:mm" size="8" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" value="{{ date_field.default_time }}"
-                                    format="time">
-                                <select name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm">
-                                    <option {% if date_field.default_ampm=='AM' %}selected{% endif %} value="AM">AM</option>
-                                    <option {% if date_field.default_ampm=='PM' %}selected{% endif %} value="PM">PM</option>
-                                </select>
-                                {% endif %} 
-                                {% endif %}
-                            </span>
+                            {% include "./date_picker.html" %}
                         </div>
+
 
                         <script type="text/javascript">
                             // Replace animation w/instant show, because anim
                             // breaks tabbing quickly past the date field.
-                            jQuery.fn.showFast = function (speed, callback) {
+                            jQuery.fn.showFast = function(speed, callback) {
                                 this.show()
                                 callback()
                             }
@@ -177,184 +63,224 @@
                             // it might even be useful -- I can imagine users
                             // being confused when the picker covers up other
                             // key form fields.
-                            $(function () {
-                                $("#id_event_starts_at_date").datepicker({
+                            $(function() {
+                                $("#id_event_starts_at_date").datepicker( {
                                     minDate: 0, showAnim: 'showFast'
-                                })
-                            });
-                        </script> 
-                        {% endwith %} 
-                        {% if campaign.allow_private %}
+                                } )
+                            } );
+                        </script>
+
+                    {% endwith %}
+
+                    {% if campaign.use_ends_at %}
+                        {% with event_ends_at as date_field %}
+                            <div>
+                                <label for="id_event_ends_at">End time</label>
+                                {% include "./date_picker.html" %}
+                            </div>
+                        {% endwith %}
+                    {% endif %}
+
+                    {% if campaign.allow_private %}
                         <div id="id_event_is_private_row" class="ak-checkbox-field">
                             <input id="id_event_is_private" type="checkbox" class="checkbox" name="event_is_private" value="1">
                             <label class="ak-checkbox-label" for="id_event_is_private">
                                 Make event private
                             </label>
                         </div>
-                        {% endif %}
-
-                        <div>
-                            <label for="id_event_max_attendees">
-                                Maximum attendance
-                                <br>
-                                <small>Leave blank for unlimited sign-ups</small>
-                            </label>
-                            <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="1000" size=3>
-                        </div>
-
-                        <input id="id_action_categories" type="hidden" name="action_categories" value="protestcongress">
-                        <div id="ak-fieldbox-action_categories" class="ak-err-below">
-                            <label for="id_action_categories">
-                                Event Types
-                            </label>
-                            <select multiple="" name="action_categories" id="id_action_categories" class="ak-userfield-input">
-                                <option value="meetinghouse">Drop-in at Congressional office</option>
-                                <option value="canvassing">Canvass/Door Knocking</option>
-                                <option value="petitions">Collecting Petitions</option>
-                                <option value="deliverhouse">Delivery of Letters or Petitions to Elected Official, House</option>
-                                <option value="deliversenate">Delivery of Letters or Petitions to Elected Official, Senate</option>
-                                <option value="signs">Distribute Signs</option>
-                                <option value="dropinshouse">Drop-ins at Congressional Office, House</option>
-                                <option value="dropinssenate">Drop-ins at Congressional Office, Senate</option>
-                                <option value="officehours">Office Hours</option>
-                                <option value="protestrally" SELECTED>Event at Verizon store</option>
-                                <option value="protestcongress">Event at Congressional office</option>
-                                <option value="sitin">Sit-In</option>
-                                <option value="letters">Submitting Letters to the Editor</option>
-                                <option value="townhall">Town Hall</option>
-                                <option value="teletownhall">Tele-Town Hall</option>
-                                <option value="emptychairtownhall">Empty Chair Town Hall</option>
-                                <option value="visibility">Visibility Event</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                {% if templateset.custom_fields.event_categories %}
-                <div id="event-categories">
-                    <h3>Event categories</h3>
-                    {% with templateset.custom_fields.event_categories|load_json as categories_config %} {% for category in categories_config
-                    %}
-                    <div class="ak-err-below">
-                        <input id="id_action_event_category_{{ category }}" class="checkbox" type="checkbox" name="action_event_category" value="{{ category }}"
-                            {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category
-                            %}checked{% endif %}>
-                        <label for="id_action_event_category_{{ category }}" class="ak-checkbox-label ak-event-category-checkbox-label">
-                            {{ categories_config|nth:category|nth:"label" }}
-                        </label>
-                    </div>
-                    {% endfor %} 
-                    {% endwith %}
-                </div>
-                {% endif %}
-
-                <div id="event-info">
-                    <h3>Describe your event to others:</h3>
-                    <div class="ak-errs-below">
-                        <label for="id_event_public_description">
-                            Public description
-                            <span class="ak-required-flag">*</span>
-                            <br>
-                            <span class="ak-normal">
-                                {% if campaign.allow_private %} For public events, people {% else %} People {% endif %} will see this text before signing
-                                up
-                            </span>
-                        </label>
-
-                        <textarea id="id_event_public_description" name="event_public_description">
-RSVP now to sign-wave for net neutrality outside your lawmaker’s office on Thursday, April 5th at 12PM and drop-off materials explaining why they need to vote for the CRA and protect real net neutrality rules.
-
-Net neutrality is not dead yet and it’s not too late to save it, but the clock is ticking! Congress will soon vote on the Congressional Review Act (CRA) resolution to reverse the FCC’s repeal, and before the CRA comes up for a vote, we need to make sure that as many lawmakers as possible are on our side. 
-
-Lawmakers are home for a congressional recess until April 6th so this a crucial opportunity to show up in force and put real pressure on them to support the CRA effort. 
-
-Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office during your visit and we’ll connect you with others in your community attending through a pre-event call. 
-                        </textarea>
-                    </div>
-                    <div>
-                        <label for="id_event_directions">Directions to event</label>
-                        <textarea id="id_event_directions" name="event_directions"></textarea>
-                    </div>
+                    {% endif %}
 
                     <div>
-                        <label for="id_event_note_to_attenddees">Note to attendees
+                        <label for="id_event_max_attendees">
+                            Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
                         </label>
-                        <textarea id="id_event_note_to_attenddees" name="event_note_to_attendees"></textarea>
+                        <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
                     </div>
+
+                    {% include_tmpl form.custom_field_html %}
                 </div>
             </div>
-            <!--9-of-12-->
-        </div>
-    </div>
-    <div class="ak-grid-row">
-        <div class="ak-grid-col ak-grid-col-12-of-12">
-            {% if not update %}
-             {% if form.host_requirements|is_nonblank or form.ground_rules|is_nonblank %}
-            <div id="ground-rules">
-                <h3>Now, please review these Team internet rules:</h3>
 
-                {% if form.host_requirements %}
-                <div class="ak-signoff-box ak-errs-below">
-                    <blockquote>
-                        <ul>
-                            <li>Team Internet events are open to the public.</li>
-                            <li>Events must have a specific street address so they can be placed on the map.</li>
-                            <li>Event descriptions should specify support for Net Neutrality. We don’t post generic meetings
-                                or events.</li>
-                            <li>We promote events that are free to the public. If a contribution is required (rather than optional)
-                                for attendance, it won’t be approved. Events that appear to be fundraising focused will not
-                                be posted.</li>
-                            <li>Events including obscenities or offensive language won’t be approved.</li>
-                            <li>Team Internet is nonpartisan. If your event refers to defeating or electing candidates for office
-                                or promoting a political party, it can’t be approved.&nbsp;</li>
-                            <li>Candidates for office and political parties can post events if the focus is on organizing support
-                                for Net Neutrality as opposed to electioneering.</li>
-                        </ul>
-                    </blockquote>
-                    <div>
-                        <input id="id_event_host_requirements" type="checkbox" name="event_host_requirements" value="1">
-                        <label class="ak-checkbox-label" for="id_event_host_requirements">
-                            <strong>Required:</strong>
-                            I can meet the requirements for hosting an event.
-                        </label>
-                    </div>
-                </div>
-                {% else %}
-                <input type="hidden" name="event_host_requirements" value="1"> {% endif %} {% if form.ground_rules|is_nonblank %}
-                <p>Here are the rules for hosting events:</p>
-                <div class="ak-signoff-box ak-errs-below">
-                    <blockquote>
-                        {% include_tmpl form.ground_rules %}
-                    </blockquote>
-                    <div>
-                        <input id="id_event_host_ground_rules" type="checkbox" name="event_host_ground_rules" value="1">
-                        <label class="ak-checkbox-label" for="id_event_host_ground_rules">
-                            <strong>Required:</strong>
-                            I agree to the rules for hosting an event.
-                        </label>
-                    </div>
-                </div>
-                {% else %}
-                <input type="hidden" name="event_host_ground_rules" value="1"> {% endif %}
+            {% if templateset.custom_fields.event_categories %}
+            <div id="event-categories">
+              <h3>Event categories</h3>
+              {% with templateset.custom_fields.event_categories|load_json as categories_config %}
+              {% for category in categories_config %}
+              <div class="ak-err-below">
+                <input id="id_action_event_category_{{ category }}"
+                       class="checkbox" type="checkbox"
+                       name="action_event_category"
+                       value="{{ category }}"
+                       {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category %}checked{% endif %}
+                >
+                <label for="id_action_event_category_{{ category }}"
+                       class="ak-checkbox-label ak-event-category-checkbox-label">
+                  {{ categories_config|nth:category|nth:"label" }}
+                </label>
+              </div>
+              {% endfor %}
+              {% endwith %}
             </div>
-
-            {% else %}
-            <input type="hidden" name="event_host_requirements" value="1">
-            <input type="hidden" name="event_host_ground_rules" value="1"> 
-            {% endif %} 
-            {% else %}
-            <input type="hidden" name="event_host_requirements" value="1">
-            <input type="hidden" name="event_host_ground_rules" value="1"> 
-            {% endif %} 
-            {% if not update %}
-            <p>
-                <strong>Next, we&rsquo;ll review your event for approval.</strong>
-            </p>
             {% endif %}
 
-            <input id="id_submit" type="submit" value="{% if update %}Update event{% else %}Continue to next step: Confirm event{% endif %}"
-                class="ak-submit-button">
-        </div>
+            <div id="event-info">
+                <h3>Tell us where your protest is so others can join you!</h3>
+                <p><a href='https://www.verizonwireless.com/stores' target="_blank">Click here</a> to find a Verizon Wireless store near you. Do not select an authorized retailer (identified by a blue icon) for your protest location. Your protest will ONLY be approved if it’s at a Verizon Wireless store identified by a red icon <a href='https://www.verizonwireless.com/stores' target="_blank">here</a>. Also, your event will not be approved if it is in a mall, as malls tend to be private property.</p>
+
+                <p>Be sure to pick a location that’s central, has good visibility, is easy to get to and/or near public transportation.</p>
+
+                <p>If there is no Verizon Wireless store near you, protest at your <a href='https://docs.google.com/spreadsheets/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0' target="_blank">member of Congress’s local office.</a></p>
+
+                <div class="unknown_user">
+                    <!--
+                        This only shows if the user form includes all of the
+                        event fields (e.g., address1, country if you use it)
+                    -->
+                    <input id="id_at_my_house" type="checkbox" class="checkbox" name="at_my_house" value="1">
+                    <label class="ak-checkbox-label" for="id_at_my_house">
+                        Use my home address
+                    </label>
+                </div>
+                <div>
+                    {% with "event_" as input_name_prefix %}
+                        <div>
+                            <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
+                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your neighborhood/city]’s Verizon store or Congressional office.'>
+                        </div>
+                        <div style="display:none;">
+                            <label for="event_country">Country</label>
+                            {% include "./country_select.html" %}
+                        </div>
+                        <div>
+                            <label for="id_event_address1">Street address<span class="ak-required-flag">*</span></label>
+                            <input id="id_event_address1" type="text" name="event_address1">
+                        </div>
+                        <div>
+                            <label for="id_event_city">City<span class="ak-required-flag">*</span></label>
+                            <input id="id_event_city" type="text" name="event_city" required>
+                        </div>
+                        <div>
+                            <label for="id_event_state">State<span class="ak-required-flag">*</span></label>
+                            {% include "./state_select.html" %}
+                        </div>
+                        <div>
+                            <label for="id_event_postal">Postal<span class="ak-required-flag">*</span></label>
+                            <input id="id_event_postal" type="text" name="event_postal">
+                        </div>
+                        <div>
+                            <label for="id_event_zip">ZIP<span class="ak-required-flag">*</span></label>
+                            <input id="id_event_zip" type="text" name="event_zip" required>
+                        </div>
+                        <!-- <div><label for="id_event_phone">Contact phone:</label> <input id="id_event_phone" type="tel" name="event_phone" size="12"></div> -->
+                        {% if campaign.show_address1 %}
+                            <p style="font-weight:200;width: 65%;margin-left: 35%;">NOTE: Event addresses are public.</p>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+
+            </div>
+
+            <div id="event-info">
+                <h3>Describe your event to others:</h3>
+                <div class="ak-errs-below">
+                    <label for="id_event_public_description">
+                        Public description<span class="ak-required-flag">*</span>
+                        <br><span class="ak-normal">
+                            {% if campaign.allow_private %}
+                                For public events, people
+                            {% else %}
+                                People
+                            {% endif %}
+                            will see this text before signing up
+                        </span>
+                    </label>
+                    <textarea id="id_event_public_description" name="event_public_description">
+Protest against the rollback of net neutrality protections.
+
+Join other Team Internet members at the protest. Internet users outraged by top Verizon lawyer turned FCC Chairman Ajit Pai’s plan to gut net neutrality are planning to protest across the country on Thursday, December 7th, one week before an expected vote at the FCC. Protesters will make it clear to members of Congress that the time is now to stand for net neutrality, not Verizon’s bottom line. And please remember, this event is about protesting actions of Verizon executives, lobbyists and their supporters in Washington, not the employees at these stores.
+                    </textarea>
+                </div>
+
+                <div>
+                    <label for="id_event_directions">Directions to event</label>
+
+                    <textarea id="id_event_directions" name="event_directions"></textarea>
+                </div>
+
+                <div style="display:none;">
+                    <label for="id_event_note_to_attenddees">Note to attendees
+                    </label>
+                    <textarea id="id_event_note_to_attenddees" name="event_note_to_attendees"></textarea>
+                </div>
+
+            </div>
+
+        </div><!--9-of-12-->
+
     </div>
+
+</div>
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+        {% if not update %}
+            {% if form.host_requirements|is_nonblank or form.ground_rules|is_nonblank %}
+                <div id="ground-rules">
+                    <h3>Now, please review these Team internet rules:</h3>
+
+                    {% if form.host_requirements %}
+                        <div class="ak-signoff-box ak-errs-below">
+                            <blockquote>
+                                {% include_tmpl form.host_requirements %}
+                            </blockquote>
+                            <div>
+                                <input id="id_event_host_requirements" type="checkbox" name="event_host_requirements" value="1">
+                                <label class="ak-checkbox-label" for="id_event_host_requirements">
+                                    <strong>Required:</strong>
+                                    I can meet the requirements for hosting an event.
+                                </label>
+                            </div>
+                        </div>
+                    {% else %}
+                        <input type="hidden" name="event_host_requirements" value="1">
+                    {% endif %}
+
+                    {% if form.ground_rules|is_nonblank %}
+                        <p>Here are the rules for hosting events:</p>
+                        <div class="ak-signoff-box ak-errs-below">
+                            <blockquote>
+                                {% include_tmpl form.ground_rules %}
+                            </blockquote>
+                            <div>
+                                <input id="id_event_host_ground_rules" type="checkbox" name="event_host_ground_rules" value="1">
+                                <label class="ak-checkbox-label" for="id_event_host_ground_rules">
+                                    <strong>Required:</strong>
+                                    I agree to the rules for hosting an event.
+                                </label>
+                            </div>
+                        </div>
+                    {% else %}
+                        <input type="hidden" name="event_host_ground_rules" value="1">
+                    {% endif %}
+                </div>
+
+            {% else %}
+                <input type="hidden" name="event_host_requirements" value="1">
+                <input type="hidden" name="event_host_ground_rules" value="1">
+            {% endif %}
+        {% else %}
+            <input type="hidden" name="event_host_requirements" value="1">
+            <input type="hidden" name="event_host_ground_rules" value="1">
+        {% endif %}
+
+        {% if not update %}
+        <p>
+			<strong>Next, we&rsquo;ll review your event for approval.</strong>
+        </p>
+        {% endif %}
+
+        <input id="id_submit" type="submit" value="{% if update %}Update event{% else %}Continue to next step: Confirm event{% endif %}" class="ak-submit-button">
+
     </div>
+</div>
+
