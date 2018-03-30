@@ -99,7 +99,7 @@
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_title" type="text" name="event_title" value="Protest against the rollback of net neutrality protections.">
+                            <input id="id_event_title" type="text" name="event_title" value="It’s recess but we’re not playing on net neutrality [Senator/ Representative (name)]">
                         </div>
                     {% endif %}
 
@@ -147,13 +147,14 @@
                             </label>
                         </div>
                     {% endif %}
-
-                    <div>
+                    <input id="id_event_max_attendees" type="hidden" name="event_max_attendees" value="1000">
+                    <input id="id_action_categories" type="hidden" name="action_categories" value="protestcongress">  
+                    <!-- <div>
                         <label for="id_event_max_attendees">
                             Maximum attendance<br><small>Leave blank for unlimited sign-ups</small>
                         </label>
                         <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
-                    </div>
+                    </div> -->
 
                     {% include_tmpl form.custom_field_html %}
                 </div>
