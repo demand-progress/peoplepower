@@ -110,11 +110,7 @@
                                     <input type="hidden" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}">
                                     {{ date_field.default_date }}
                                   {% else %}
-                                    {% if 'source=map' in request.get_full_path %}
-                                    <input id="defaultDateValue" type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" format="date">
-                                      {% else %}
-                                    <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}" format="date">  
-                                    {% endif %}
+                                    <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}" format="date"> 
                                   {% endif %}
                                     {% if not date_field.hidden_time %}
                                         at
@@ -129,19 +125,11 @@
                                         <input type="hidden" name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm" value="{{ date_field.default_ampm }}">
                                         {{ date_field.default_time }} {{ date_field.default_ampm }}
                                     {% else %}
-                                      {% if 'source=map' in request.get_full_path %}
-                                       <input type="text" placeholder="hh:mm" size="8" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" value="12" format="time">
-                                            <select name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm">
-                                                <option {% if date_field.default_ampm == 'AM' %}selected{% endif %} value="AM">AM</option>
-                                                <option selected value="PM">PM</option>
-                                            </select>
-                                      {% else %}
                                        <input type="text" placeholder="hh:mm" size="8" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" value="{{ date_field.default_time }}" format="time">
                                             <select name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm">
                                                 <option {% if date_field.default_ampm == 'AM' %}selected{% endif %} value="AM">AM</option>
                                                 <option {% if date_field.default_ampm == 'PM' %}selected{% endif %} value="PM">PM</option>
-                                            </select>
-                                      {% endif %}       
+                                            </select>      
                                     {% endif %}
                                 {% endif %}
                             </span>
@@ -191,28 +179,28 @@
             Event Types
         </label>
 		<select multiple="" name="action_categories" id="id_action_categories" class="ak-userfield-input">
-<option value="meetinghouse">Drop-in at Congressional office</option> 
-<option value="canvassing">Canvass/Door Knocking</option> 
-<option value="petitions">Collecting Petitions</option>
-<option value="deliverhouse">Delivery of Letters or Petitions to Elected Official, House</option> 
-<option value="deliversenate">Delivery of Letters or Petitions to Elected Official, Senate</option> 
-<option value="signs">Distribute Signs</option> 
-<option value="dropinshouse">Drop-ins at Congressional Office, House</option> 
-<option value="dropinssenate">Drop-ins at Congressional Office, Senate</option> 
-<option value="officehours">Office Hours</option>
-			<option value="protestrally" SELECTED>Event at Verizon store</option> 
-			<option value="protestcongress">Event at Congressional office</option> 
-<option value="sitin">Sit-In</option> 
-<option value="letters">Submitting Letters to the Editor</option>
-<option value="townhall">Town Hall</option> 
-<option value="teletownhall">Tele-Town Hall</option> 
-<option value="emptychairtownhall">Empty Chair Town Hall</option> 
-<option value="visibility">Visibility Event</option> 
+            <option value="meetinghouse">Drop-in at Congressional office</option> 
+            <option value="canvassing">Canvass/Door Knocking</option> 
+            <option value="petitions">Collecting Petitions</option>
+            <option value="deliverhouse">Delivery of Letters or Petitions to Elected Official, House</option> 
+            <option value="deliversenate">Delivery of Letters or Petitions to Elected Official, Senate</option> 
+            <option value="signs">Distribute Signs</option> 
+            <option value="dropinshouse">Drop-ins at Congressional Office, House</option> 
+            <option value="dropinssenate">Drop-ins at Congressional Office, Senate</option> 
+            <option value="officehours">Office Hours</option>
+            <option value="protestrally" SELECTED>Event at Verizon store</option> 
+            <option value="protestcongress">Event at Congressional office</option> 
+            <option value="sitin">Sit-In</option> 
+            <option value="letters">Submitting Letters to the Editor</option>
+            <option value="townhall">Town Hall</option> 
+            <option value="teletownhall">Tele-Town Hall</option> 
+            <option value="emptychairtownhall">Empty Chair Town Hall</option> 
+            <option value="visibility">Visibility Event</option> 
 			<option value="other">Other</option>
 		</select>
-	</div> 
-                </div>
-            </div>  
+        </div> 
+    </div>
+</div>  
        
             {% if templateset.custom_fields.event_categories %}
                 <div id="event-categories">
@@ -237,22 +225,21 @@
                 {% endif %}
 
                 <div id="event-info" >
-                    <div style="display:none;">
-                        <h3>Describe your event to others:</h3>
-                        <div class="ak-errs-below" >
-                            <label for="id_event_public_description">
-                                Public description<span class="ak-required-flag">*</span>
-                                <br><span class="ak-normal">
-                                    {% if campaign.allow_private %}
-                                        For public events, people
-                                    {% else %}
-                                        People
-                                    {% endif %}
-                                    will see this text before signing up
-                                </span>
-                            </label>
-                        
-                            <textarea id="id_event_public_description" name="event_public_description">
+                    <h3>Describe your event to others:</h3>
+                    <div class="ak-errs-below" >
+                        <label for="id_event_public_description">
+                            Public description<span class="ak-required-flag">*</span>
+                            <br><span class="ak-normal">
+                                {% if campaign.allow_private %}
+                                    For public events, people
+                                {% else %}
+                                    People
+                                {% endif %}
+                                will see this text before signing up
+                            </span>
+                        </label>
+                    
+                        <textarea id="id_event_public_description" name="event_public_description">
 RSVP now to sign-wave for net neutrality outside your lawmaker’s office on Thursday, April 5th at 12PM and drop-off materials explaining why they need to vote for the CRA and protect real net neutrality rules.
 
 Net neutrality is not dead yet and it’s not too late to save it, but the clock is ticking! Congress will soon vote on the Congressional Review Act (CRA) resolution to reverse the FCC’s repeal, and before the CRA comes up for a vote, we need to make sure that as many lawmakers as possible are on our side. 
@@ -260,25 +247,21 @@ Net neutrality is not dead yet and it’s not too late to save it, but the clock
 Lawmakers are home for a congressional recess until April 6th so this a crucial opportunity to show up in force and put real pressure on them to support the CRA effort. 
 
 Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office during your visit and we’ll connect you with others in your community attending through a pre-event call. 
-                            </textarea>
-                        </div>
-                        <div>
-                            <label for="id_event_directions">Directions to event</label>             
-                                <textarea id="id_event_directions" name="event_directions"></textarea>                    
-                        </div>
+                        </textarea>
+                    </div>
+                    <div>
+                        <label for="id_event_directions">Directions to event</label>             
+                            <textarea id="id_event_directions" name="event_directions"></textarea>                    
+                    </div>
                     
-                        <div >
-                            <label for="id_event_note_to_attenddees">Note to attendees
-                            </label>
-                            <textarea id="id_event_note_to_attenddees" name="event_note_to_attendees"></textarea>
-                        </div>
+                    <div >
+                        <label for="id_event_note_to_attenddees">Note to attendees
+                        </label>
+                        <textarea id="id_event_note_to_attenddees" name="event_note_to_attendees"></textarea>
                     </div>
                 </div>
-
             </div><!--9-of-12-->
-
-        </div>
-        
+        </div>       
     </div>
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">
@@ -347,7 +330,6 @@ Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office du
             {% endif %}
     
             <input id="id_submit" type="submit" value="{% if update %}Update event{% else %}Continue to next step: Confirm event{% endif %}" class="ak-submit-button">
-    
         </div>
     </div>
 </div>
