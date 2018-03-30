@@ -4,7 +4,7 @@
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">  
             {% if not update %}
-                <h2>IT’S RECESS, BUT WE’RE NOT PLAYING: DEFEND NET NEUTRALITY ON APRIL 5TH.</h2>
+                <h2>{{ page.title }}</h2>
             {% else %}
                 <h2>Update Event Information</h2>
             {% endif %}
@@ -184,9 +184,7 @@
                              </label>
                          </div>
                      {% endif %}
-                     <input id="id_event_max_attendees" type="hidden" name="event_max_attendees" value="1000">
-                     <input id="id_action_categories" type="hidden" name="action_categories" value="protestcongress">
-                     <!--<div id="ak-fieldbox-action_categories" class="ak-err-below">
+                     <div id="ak-fieldbox-action_categories" class="ak-err-below">
                        <label for="id_action_categories">
                           Event Types
                           </label>
@@ -210,7 +208,7 @@
                     <option value="visibility">Visibility Event</option>
                         <option value="other">Other</option>
                       </select>
-    	             </div>!-->
+    	             </div>
                  </div>
              </div>
        
