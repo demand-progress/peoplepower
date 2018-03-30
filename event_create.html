@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{% if "source=map" in request.get_full_path %}
+{% if "source=dev" in request.get_full_path %}
 {% include "./event_attend_source_map.html" %}
 {% else %}
 <form class="ak-form norecognize" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}" accept-charset="utf-8">
@@ -412,7 +412,6 @@ Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office du
             }
         });
 
-        document.getElementById("defaultDateValue").defaultValue = "04/05/2018";
     });
 
     $(function() {
