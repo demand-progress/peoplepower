@@ -12,7 +12,7 @@
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">
             {% if not update %}
-                <h2>IT’S RECESS, BUT WE’RE NOT PLAYING: DEFEND NET NEUTRALITY ON APRIL 5TH.</h2>
+                <h2>{{ page.title }}</h2>
             {% else %}
                 <h2>Update Event Information</h2>
             {% endif %}
@@ -41,7 +41,62 @@
             <div id="ak-user-info">
                 {% include "./user_form_wrapper.html" %}
             </div>
-
+            <div id="event-info">
+                    <h3>Tell us where your protest is so others can join you!</h3>
+                    <p><a href='https://www.verizonwireless.com/stores' target="_blank">Click here</a> to find a Verizon Wireless store near you. Do not select an authorized retailer (identified by a blue icon) for your protest location. Your protest will ONLY be approved if it’s at a Verizon Wireless store identified by a red icon <a href='https://www.verizonwireless.com/stores' target="_blank">here</a>. Also, your event will not be approved if it is in a mall, as malls tend to be private property.</p>
+    
+                    <p>Be sure to pick a location that’s central, has good visibility, is easy to get to and/or near public transportation.</p>
+    
+                    <p>If there is no Verizon Wireless store near you, protest at your <a href='https://docs.google.com/spreadsheets/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0' target="_blank">member of Congress’s local office.</a></p>
+    
+                    <div class="unknown_user">
+                        <!--
+                            This only shows if the user form includes all of the
+                            event fields (e.g., address1, country if you use it)
+                        -->
+                        <input id="id_at_my_house" type="checkbox" class="checkbox" name="at_my_house" value="1">
+                        <label class="ak-checkbox-label" for="id_at_my_house">
+                            Use my home address
+                        </label>
+                    </div>
+                    <div>
+                        {% with "event_" as input_name_prefix %}
+                            <div>
+                                <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
+                                <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your neighborhood/city]’s Verizon store or Congressional office.'>
+                            </div>
+                            <div style="display:none;">
+                                <label for="event_country">Country</label>
+                                {% include "./country_select.html" %}
+                            </div>
+                            <div>
+                                <label for="id_event_address1">Street address<span class="ak-required-flag">*</span></label>
+                                <input id="id_event_address1" type="text" name="event_address1">
+                            </div>
+                            <div>
+                                <label for="id_event_city">City<span class="ak-required-flag">*</span></label>
+                                <input id="id_event_city" type="text" name="event_city" required>
+                            </div>
+                            <div>
+                                <label for="id_event_state">State<span class="ak-required-flag">*</span></label>
+                                {% include "./state_select.html" %}
+                            </div>
+                            <div>
+                                <label for="id_event_postal">Postal<span class="ak-required-flag">*</span></label>
+                                <input id="id_event_postal" type="text" name="event_postal">
+                            </div>
+                            <div>
+                                <label for="id_event_zip">ZIP<span class="ak-required-flag">*</span></label>
+                                <input id="id_event_zip" type="text" name="event_zip" required>
+                            </div>
+                            <!-- <div><label for="id_event_phone">Contact phone:</label> <input id="id_event_phone" type="tel" name="event_phone" size="12"></div> -->
+                            {% if campaign.show_address1 %}
+                                <p style="font-weight:200;width: 65%;margin-left: 35%;">NOTE: Event addresses are public.</p>
+                            {% endif %}
+                        {% endwith %}
+                     </div>
+                </div>
+                
             <div id="ak-event-info">
                 <h3>Tell us about your protest:</h3>
                 <div>Plan your protest at a Verizon store or Congressional office for a time that's easy for you and others to get there. Lunchtime and the end of the work day (and before the store or office closes) are the best times.</div>
@@ -131,61 +186,7 @@
             </div>
             {% endif %}
             
-            <div id="event-info">
-                <h3>Tell us where your protest is so others can join you!</h3>
-                <p><a href='https://www.verizonwireless.com/stores' target="_blank">Click here</a> to find a Verizon Wireless store near you. Do not select an authorized retailer (identified by a blue icon) for your protest location. Your protest will ONLY be approved if it’s at a Verizon Wireless store identified by a red icon <a href='https://www.verizonwireless.com/stores' target="_blank">here</a>. Also, your event will not be approved if it is in a mall, as malls tend to be private property.</p>
-
-                <p>Be sure to pick a location that’s central, has good visibility, is easy to get to and/or near public transportation.</p>
-
-                <p>If there is no Verizon Wireless store near you, protest at your <a href='https://docs.google.com/spreadsheets/d/1wa942AqOx61WB0k43MbfOzJwdDBIPW7s9KK-dqWWs-U/edit#gid=0' target="_blank">member of Congress’s local office.</a></p>
-
-                <div class="unknown_user">
-                    <!--
-                        This only shows if the user form includes all of the
-                        event fields (e.g., address1, country if you use it)
-                    -->
-                    <input id="id_at_my_house" type="checkbox" class="checkbox" name="at_my_house" value="1">
-                    <label class="ak-checkbox-label" for="id_at_my_house">
-                        Use my home address
-                    </label>
-                </div>
-                <div>
-                    {% with "event_" as input_name_prefix %}
-                        <div>
-                            <label for="id_event_venue">Venue<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_venue" type="text" if-at-my-house="Home" name="event_venue" value='[Insert your neighborhood/city]’s Verizon store or Congressional office.'>
-                        </div>
-                        <div style="display:none;">
-                            <label for="event_country">Country</label>
-                            {% include "./country_select.html" %}
-                        </div>
-                        <div>
-                            <label for="id_event_address1">Street address<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_address1" type="text" name="event_address1">
-                        </div>
-                        <div>
-                            <label for="id_event_city">City<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_city" type="text" name="event_city" required>
-                        </div>
-                        <div>
-                            <label for="id_event_state">State<span class="ak-required-flag">*</span></label>
-                            {% include "./state_select.html" %}
-                        </div>
-                        <div>
-                            <label for="id_event_postal">Postal<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_postal" type="text" name="event_postal">
-                        </div>
-                        <div>
-                            <label for="id_event_zip">ZIP<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_zip" type="text" name="event_zip" required>
-                        </div>
-                        <!-- <div><label for="id_event_phone">Contact phone:</label> <input id="id_event_phone" type="tel" name="event_phone" size="12"></div> -->
-                        {% if campaign.show_address1 %}
-                            <p style="font-weight:200;width: 65%;margin-left: 35%;">NOTE: Event addresses are public.</p>
-                        {% endif %}
-                    {% endwith %}
-                 </div>
-            </div>
+         
         
             <div id="event-info">
                 <h3>Describe your event to others:</h3>
