@@ -4,8 +4,8 @@
 {% block content %}
 
 {% if "source=dev" in request.get_full_path %}
-{% include "./event_attend_source_map.html" %}
-{% else %}
+{% include "./event_create_source_map.html" %}
+{% elif "source=map" in request.get_full_path %}
 <form class="ak-form norecognize" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}" accept-charset="utf-8">
     <input type="hidden" name="page" value="{{ page.name }}">
 
@@ -289,7 +289,9 @@ Once you RSVP, you’ll get materials to drop-off at your lawmaker’s office du
 
     </div>
 </div>
- {% endif %}
+{% else %}
+    {% include "./event_create_source_businessesfornetneutrality.html" %}
+{% endif %}
 
 </form>
 {% endblock %}
