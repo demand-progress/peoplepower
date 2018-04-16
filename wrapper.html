@@ -24,7 +24,11 @@
 		<meta property="og:site_name" content="events.battleforthenet.com">
 		<meta name="twitter:card" value="summary_large_image">
     {% else %}
-		<title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
+        {% if "source=businessesfornetneutrality" in request.get_full_path %}
+            <title>MAY 2, 2018: SMALL BUSINESSES SAVE THE INTERNET</title>
+        {% else %}
+            <title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
+        {% endif %}
 		{{ page.followup.share_title_tag }}
 		{% if form.id %}<meta name="description" property="og:description" content="{% block description %}{{ page.followup.share_description_value }}{% endblock %}">{% endif %}
 		{{ page.followup.share_image_tag }}
