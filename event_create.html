@@ -293,7 +293,11 @@ Note: By choosing to attend this event, you are committing to participate non-vi
         </p>
         {% endif %}
 
-        <input id="id_submit" type="submit" value="{% if update %}Update event{% else %}Continue to next step: Confirm event{% endif %}" class="ak-submit-button">
+        {% if "source=map" in request.get_full_path %}
+            <input id="id_submit" type="submit" value="{% if update %}Update event{% else %}CLICK HERE TO SUBMIT YOUR EVENT{% endif %}" class="ak-submit-button">
+        {% else %}
+            <input id="id_submit" type="submit" value="{% if update %}Update event{% else %}Continue to next step: Confirm event{% endif %}" class="ak-submit-button">
+        {% endif %}
 
     </div>
 </div>
