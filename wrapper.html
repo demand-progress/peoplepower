@@ -24,8 +24,8 @@
 		<meta property="og:site_name" content="events.battleforthenet.com">
 		<meta name="twitter:card" value="summary_large_image">
     {% else %}
-        {% if "source=businessesfornetneutrality" in request.get_full_path %}
-            <title>MAY 2, 2018: SMALL BUSINESSES SAVE THE INTERNET</title>
+        {% if "source=map" in request.get_full_path %}
+            <title>RED ALERT: PROTEST FOR NET NEUTRALITY! EVENT SUBMISSION FORM:</title>
         {% else %}
             <title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
         {% endif %}
