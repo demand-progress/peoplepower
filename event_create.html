@@ -4,7 +4,7 @@
 {% block content %}
 
 {% if "source=dev" in request.get_full_path %}
-    {% include "./event_create_source_map.html" %}
+    {% include "./event_create_source_dev.html" %}
 {% elif "source=map" in request.get_full_path %}
     {% include "./event_create_source_map.html" %}
 {% else %}
