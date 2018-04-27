@@ -6,7 +6,7 @@
             <input type="hidden" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}">
             {{ date_field.default_date }}
         {% else %}
-            <input type="text" placeholder="mm/dd/yyyy" value="5/10/2018" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}" format="date">
+            <input type="text" placeholder="mm/dd/yyyy" value="5/14/2018" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}" format="date">
         {% endif %}
         {% if not date_field.hidden_time %}
             at
