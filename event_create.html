@@ -5,10 +5,8 @@
 
 {% if "source=dev" in request.get_full_path %}
     {% include "./event_create_source_dev.html" %}
-{% elif "source=map" in request.get_full_path %}
-    {% include "./event_create_source_map.html" %}
 {% else %}
-    {% include "./event_create_source_businessesfornetneutrality.html" %}
+    {% include "./event_create_source_map.html" %}
 {% endif %}
 
 </form>
