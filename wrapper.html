@@ -24,11 +24,7 @@
 		<meta property="og:site_name" content="events.battleforthenet.com">
 		<meta name="twitter:card" value="summary_large_image">
     {% else %}
-        {% if "source=map" in request.get_full_path %}
-            <title>RED ALERT: PROTEST FOR NET NEUTRALITY! EVENT SUBMISSION FORM:</title>
-        {% else %}
-            <title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
-        {% endif %}
+        <title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
 		{{ page.followup.share_title_tag }}
 		{% if form.id %}<meta name="description" property="og:description" content="{% block description %}{{ page.followup.share_description_value }}{% endblock %}">{% endif %}
 		{{ page.followup.share_image_tag }}
