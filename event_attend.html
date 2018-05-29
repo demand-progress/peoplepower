@@ -43,7 +43,13 @@
             <div class="ak-grid-col ak-grid-col-6-of-12">
               {% with event_type=event.custom_fields.categories|default:"" %}
                 {% if event_type|contains:"protestrally" %}
-                    <img src="{{ event.campaign.create_page.custom_fields.protest_event_image }}">
+                    {% if args.event_id == '3271' %}
+                    <img src="https://s33.postimg.cc/f05vr7u73/Murkowski.jpg">
+                    {% elif args.event_id == '3272' %}
+                        <img src="https://s33.postimg.cc/bv3p73p73/Kennedy-1.jpg">
+                    {% else %}
+                        <img src="{{ event.campaign.create_page.custom_fields.congress_event_image }}">
+                    {% endif%} 
                 {% elif event_type|contains:"protestcongress" %}
                     <img src="{{ event.campaign.create_page.custom_fields.congress_event_image }}">
                 {% elif event_type|contains:"townhall" %}
