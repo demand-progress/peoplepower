@@ -65,6 +65,13 @@
                     {# Optional TAF {% include "./inline_tellafriend.html" %} #}
 
                     <button type="submit" class="ak-submit-button">Sign Up</button>
+                    {% if "sign-up-meet-your-rep" in request.get_full_path %}
+                    <a class="ak-button ak-share-button ak-small-share-button ak-facebook" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;akid={{akid}}" target="_blank">Post to Facebook</a>
+                    
+                    <a class="ak-button ak-share-button ak-small-share-button ak-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;&amp;akid={{akid}}" target="_blank">Share on Twitter</a>
+                    
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    {% endif %}
                 </div>
 
             </div>
