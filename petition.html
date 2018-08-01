@@ -6,9 +6,7 @@
 
 <form class="ak-form" name="act" method="POST" action="/act/" accept-charset="utf-8">
     <input type="hidden" name="page" value="{{ page.name }}">
-    {% if "sign-up-meet-your-rep" in request.get_full_path %}
-        <div>Hello</div>
-    {% elif %}
+
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">
             <h2>{{ page.title }}</h2>
@@ -16,7 +14,7 @@
     </div>
 
     <div class="ak-grid-row">
-        {% if "sign-up-meet-your-rep" in request.get_full_path %}
+
         <div class="ak-grid-col ak-grid-col-7-of-12">
             {% if page.custom_fields.featured_image or form.about_text %}
             <div id="ak-petition-story">
@@ -66,6 +64,8 @@
 
                     {# Optional TAF {% include "./inline_tellafriend.html" %} #}
 
+                    <button type="submit" class="ak-submit-button">Sign Up</button>
+
                 </div>
 
             </div>
@@ -73,7 +73,7 @@
         </div>
 
     </div><!--gridrow-->
-    {% endif %}
+
 </form>
 
 {% endblock %}
