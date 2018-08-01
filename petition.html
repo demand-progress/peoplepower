@@ -6,7 +6,9 @@
 
 <form class="ak-form" name="act" method="POST" action="/act/" accept-charset="utf-8">
     <input type="hidden" name="page" value="{{ page.name }}">
-
+    {% if "sign-up-meet-your-rep" in request.get_full_path %}
+        {% include "./petition_meet_rep.html" %}
+    {% else %} 
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">
             <h2>{{ page.title }}</h2>
@@ -73,7 +75,7 @@
         </div>
 
     </div><!--gridrow-->
-
+{% endif %} 
 </form>
 
 {% endblock %}
