@@ -1,70 +1,87 @@
-<div class="ak-grid-row">
-    <div class="ak-grid-col ak-grid-col-12-of-12">
-        <h2>{{ page.title }}</h2>
-    </div>
-</div>
-
-<div class="ak-grid-row">
-    <div class="ak-grid-col ak-grid-col-7-of-12">
-        {% if page.custom_fields.featured_image or form.about_text %}
-        <div id="ak-petition-story">
-            {% if page.custom_fields.featured_image %}
-            <img class="ak-featured-img {% if page.goal %}ak-margin-top-1{% endif %}" src="{{page.custom_fields.featured_image}}">
-            {% endif %}
-            {% autoescape off %}
-                <div class="ak-text-expander">{% include_tmpl form.about_text %}</div>
-                <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
-            {% endautoescape %}
-        </div>
-         {% else %}
-             {% if form.statement_leadin %}
-                <p class="ak-petition-leadin">
-                    {% include_tmpl form.statement_leadin %}
-                </p>
-            {% endif %}
-
-            <div class="ak-margin-bottom-1 ak-text-expander">
-                {% include_tmpl form.statement_text %}
-            </div>
-            <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
-        {% endif %}
-    </div>
-
-    <div class="ak-grid-col ak-grid-col-5-of-12">
-        {% include "./progress_meter.html" %}
-
-        <div class="statement-text-wrapper ak-field-box ak-field-box-borderless">
-
-            <h3>Sign up here:</h3>
-
-            {% if page.custom_fields.featured_image or form.about_text %}
-                       {% if form.statement_leadin %}
-                        <p class="ak-petition-leadin">
-                            {% include_tmpl form.statement_leadin %}
-                            </p>
-                    {% endif %}
-
-                    <div class="ak-margin-bottom-1">
-                        {% include_tmpl form.statement_text %}
-                    </div>
-            {% endif %}
-
-            <div id="petition-form" class="ak-styled-fields {{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}} {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
-                {% include "./user_form_wrapper.html" %}
-
-                {# Optional TAF {% include "./inline_tellafriend.html" %} #}
-
-                <button type="submit" class="ak-submit-button">Sign Up</button>
-
-                <a class="ak-button ak-share-button ak-small-share-button ak-facebook" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;akid={{akid}}" target="_blank">Post to Facebook</a>
-                
-                <a class="ak-button ak-share-button ak-small-share-button ak-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;&amp;akid={{akid}}" target="_blank">Share on Twitter</a>
-                
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><!--gridrow-->
+<div class="ak-grid-row" id="petition">
+    <div class="ak-grid-col ak-grid-col-1-of-12" style="text-align: center;">
+   </div>
+       <div class="ak-grid-col ak-grid-col-10-of-12" style="text-align: center;">
+           <h2>{{ page.title }}</h2>
+         
+           <h1 style="color: #272F32; line-height: 35px;">We're organizing and training people passionate about net neutrality to meet with their members of Congress this August.</h1>
+   <h3 style="color: #272F32; font-weight: 0; font-size: 1.4em;">The dates and times of the meetings are still being set. If you're interested in attending, please fill in the information below.</h3>
+       </div>
+    <div class="ak-grid-col ak-grid-col-1-of-12" style="text-align: center;">
+   </div>
+   </div>
+   
+   <div class="ak-grid-row" >
+   <div class="ak-grid-col ak-grid-col-2-of-12">
+   </div>
+      <div class="ak-grid-col ak-grid-col-8-of-12">
+           {% include "./progress_meter.html" %}
+   
+           <div class="statement-text-wrapper ak-field-box ak-field-box-borderless">
+   
+               <h3>Sign up here:</h3>
+   
+               {% if page.custom_fields.featured_image or form.about_text %}
+                          {% if form.statement_leadin %}
+                           <p class="ak-petition-leadin">
+                               {% include_tmpl form.statement_leadin %}
+                               </p>
+                       {% endif %}
+   
+                       <div class="ak-margin-bottom-1">
+                           {% include_tmpl form.statement_text %}
+                       </div>
+               {% endif %}
+   <div>peition block</div>
+               <div id="petition-form" class="ak-styled-fields {{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}} {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+                   {% include "./user_form_wrapper.html" %}
+   
+                   {# Optional TAF {% include "./inline_tellafriend.html" %} #}
+   
+                   <button type="submit" class="ak-submit-button">Sign Up</button>
+   
+               </div>
+   
+           </div>
+   <div class="ak-grid-col ak-grid-col-2-of-12">
+   </div>
+       </div>
+   
+       <div class="ak-grid-col ak-grid-col-12-of-12">
+           {% if page.custom_fields.featured_image or form.about_text %}
+           <div id="ak-petition-story">
+               {% if page.custom_fields.featured_image %}
+               <img class="ak-featured-img {% if page.goal %}ak-margin-top-1{% endif %}" src="{{page.custom_fields.featured_image}}">
+               {% endif %}
+               {% autoescape off %}
+                   <div class="ak-text-expander">{% include_tmpl form.about_text %}</div>
+                   <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
+               {% endautoescape %}
+           </div>
+            {% else %}
+                {% if form.statement_leadin %}
+                   <p class="ak-petition-leadin">
+                       {% include_tmpl form.statement_leadin %}
+                   </p>
+               {% endif %}
+   
+               <div class="ak-margin-bottom-1 ak-text-expander">
+                   {% include_tmpl form.statement_text %}
+               </div>
+               <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
+           {% endif %}
+    <div class="ak-grid-row">
+   <div class="ak-grid-col ak-grid-col-8-of-12">
+   </div>
+   <div class="ak-grid-col ak-grid-col-4-of-12">
+                   <a class="ak-button ak-share-button ak-small-share-button ak-facebook" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;akid={{akid}}" target="_blank">Post to Facebook</a>
+                   
+                   <a class="ak-button ak-share-button ak-small-share-button ak-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;&amp;akid={{akid}}" target="_blank">Share on Twitter</a>
+                   
+                   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+   </div>
+   
+   </div>
+       </div>
+   
+   </div><!--gridrow-->
